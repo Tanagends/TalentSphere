@@ -6,7 +6,7 @@ from datetime import datetime
 from sqlalchemy.sql import text
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = ""
+app.config['SQLALCHEMY_DATABASE_URI'] = "mysql://talent_admin:talent_pwd@localhost/talent_sphere"
 db = SQLAlchemy(app)
 
 class BaseModel(db.Model):
@@ -14,16 +14,16 @@ class BaseModel(db.Model):
 
     __abstract__ = True
 
-    id = db.Column(db.String, primary_key=True, default=uuid4())
+    id = db.Column(db.String(120), primary_key=True, default=uuid4())
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-    email = db.Column(db.String, nullable=False)
-    name =  db.Column(db.String, nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    name =  db.Column(db.String(120), nullable=False)
     phone_number = db.Column(db.String(16), nullable=False)
-    city = db.Column(db.String)
-    country = db.Column(db.String)
+    city = db.Column(db.String(120))
+    country = db.Column(db.String(120))
     postal_code = db.Column(db.Integer)
-    password = db.Column(db.String)
+    password = db.Column(db.String(120))
 
 
 class Player(BaseModel):
@@ -31,11 +31,11 @@ class Player(BaseModel):
 
     __tablename__ = 'players'
 
-    surname = db.Column(db.String, nullable=False)
+    surname = db.Column(db.String(120), nullable=False)
     DOB = db.Column(db.Integer, nullable=False)
-    position = db.Column(db.String)
-    club = db.Column(db.String)
-    academy = db.Column(db.String)
+    position = db.Column(db.String(120))
+    club = db.Column(db.String(120))
+    academy = db.Column(db.String(120))
 
 
 class Scout(BaseModel):
@@ -48,10 +48,10 @@ class Scout(BaseModel):
                         )
     """
 
-    surname = db.Column(db.String, nullable=False)
+    surname = db.Column(db.String(120), nullable=False)
     DOB = db.Column(db.Integer, nullable=False)
-    club_id = db.Column(db.String, db.ForeignKey('clubs.id'), nullable=True)
-    academy_id = db.Column(db.String, db.ForeignKey('academies.id'), nullable=True)
+    club_id = db.Column(db.String(120), db.ForeignKey('clubs.id'), nullable=True)
+    academy_id = db.Column(db.String(120), db.ForeignKey('academies.id'), nullable=True)
 
 
 class Club(BaseModel):
@@ -74,9 +74,16 @@ class Sponsor(BaseModel):
 
     __tablename__ = 'sponsors'
 
-    organization = db.Column(db.String, nullable=True)
+    organization = db.Column(db.String(120), nullable=True)
 
+
+@app.route('/')
+def index():
+    """Landing page"""
+    return f"Hello talentsphere"
+
+with app.app_context():
+    db.create_all()
 
 if __name__ == "__main__":
-    db.create_all()
     app.run(debug=True)
