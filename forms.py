@@ -58,4 +58,4 @@ class AcademyForm(BaseForm):
 class SponsorForm(BaseForm):
     """Sponsor registration form"""
 
-    organization = StringField('Position')
+    organization = StringField('Organization')
