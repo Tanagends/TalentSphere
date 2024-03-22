@@ -10,7 +10,7 @@ class BaseForm(FlaskForm):
 
     name = StringField('Name', validators=
                        [DataRequired(message="Please enter your name"),
-                       Length(min=2, max=36)
+                       Length(min=2, max=36))
     email = StringField('Email', validators=[DataRequired(), Email()])
     phone_number = StringField('Mobile number', validators=[DataRequired(),
                                Length(min=5, max=15)])
@@ -27,7 +27,7 @@ class ScoutPlayerForm(BaseForm):
 
     surname = StringField('Surname', validators=
                        [DataRequired(message="Please enter your surname"),
-                       Length(min=2, max=36)
+                       Length(min=2, max=36))
     DOB = StringField('Date of Birth', validators=[DataRequired()])
 
 
