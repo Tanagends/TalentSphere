@@ -29,6 +29,8 @@ class ScoutPlayerForm(BaseForm):
     surname = StringField('Surname', validators=[DataRequired(message="Please enter your surname"),
                                                  Length(min=2, max=36)])
     DOB = StringField('Date of Birth', validators=[DataRequired()])
+    club = StringField('Club', validators=[Length(min=2, max=36)])
+    academy = StringField('Academy', validators=[Length(min=2, max=36)])
 
 
 class PlayerForm(ScoutPlayerForm):
@@ -36,8 +38,7 @@ class PlayerForm(ScoutPlayerForm):
 
     position = StringField('Position', validators=[DataRequired(),
                            Length(min=2, max=36)])
-    club = StringField('Club', validators=[Length(min=2, max=36)])
-    academy = StringField('Academy', validators=[Length(min=2, max=36)])
+    
 
 
 class ScoutForm(ScoutPlayerForm):
