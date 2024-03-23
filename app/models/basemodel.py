@@ -1,6 +1,7 @@
 """Talent Sphere BaseModel"""
 
 from uuid import uuid4
+from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timezone
 from app import db
 
@@ -19,3 +20,11 @@ class BaseModel(db.Model):
     country = db.Column(db.String(120))
     postal_code = db.Column(db.Integer)
     password = db.Column(db.String(120))
+    
+    def set_password(self, passwd):
+        """set a password for all other classes to inherit"""
+        self.password_hash = generate_password_hash(passwd)
+    
+    def check_password(self, passwd):
+        """check password to confirm before login in"""
+        return check_password_hash(self.password_hash, passwd)

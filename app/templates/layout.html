@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User SignUp</title>
+</head>
+<body>
+    <h1>Welcome to our sign up for {{ user }}! The sky is about to be the limit!!</h1>
+    <form>
+        <fieldset>
+            <legend>Personal Information</legend>
+                {{ form.hidden_tag() }}
+                {{ form.name.label }} {{ form.name }}
+                {% for error in form.name.errors %}
+                    <span>error</span>
+                {% endfor %}
+                {% block surname %}{% endblock surname %}
+        </fieldset>
+        <fieldset>
+            <legend>Contact Details</legend>
+                {{ form.email.label }} {{ form.email }}
+                {% for error in form.email.errors %}
+                    <span>error</span>
+                {% endfor %}
+                {{ form.phone_number.label }} {{ form.phone_number }}
+                {% for error in form.phone_number.errors %}
+                    <span>error</span>
+                {% endfor %}
+        </fieldset>
+        <fieldset>
+            <legend>Location</legend>
+                {{ form.city.label}} {{ form.city }}
+                {{% for error in form.city.errors %}}
+                    <span>error</span>
+                {{% endfor %}}
+                {{ form.country.label }} {{ form.country }}
+                {{% for error in form.country.errors %}}
+                    <span>error</span>
+                {{% endfor %}}
+        </fieldset>
+        <fieldset>
+            <legend>Password Setup</legend>
+            {{ form.password.label }} {{ form.password }}
+            {% for error in form.password.errors %}
+                <span>error</span>
+            {% endfor %}
+            {{ form.confirm_password }} {{ form.password }}
+            {% for error in form.confirm_password.errors %}
+                <span>error</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <legend>Image Uploads</legend>
+            {% block uploads %}{% endblock uploads%}
+        </fieldset>
+    </form>
+    
+</body>
+</html>
