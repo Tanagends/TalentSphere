@@ -1,6 +1,7 @@
 """Module for declaring all form classes"""
 
 from flask_wtf import FlaskForm
+from flask_wtf import FileField, FileRequired, FileAllowed
 from wtforms import StringField, PasswordField, SubmitField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
@@ -31,6 +32,7 @@ class ScoutPlayerForm(BaseForm):
     DOB = StringField('Date of Birth', validators=[DataRequired()])
     club = StringField('Club', validators=[Length(min=2, max=36)])
     academy = StringField('Academy', validators=[Length(min=2, max=36)])
+    profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 'png'], "Images only")])
 
 
 class PlayerForm(ScoutPlayerForm):
@@ -38,7 +40,6 @@ class PlayerForm(ScoutPlayerForm):
 
     position = StringField('Position', validators=[DataRequired(),
                            Length(min=2, max=36)])
-    
 
 
 class ScoutForm(ScoutPlayerForm):
@@ -48,15 +49,16 @@ class ScoutForm(ScoutPlayerForm):
 
 class ClubForm(BaseForm):
     """Club registration form"""
-    pass
+    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png'], "Images only")])
 
 
 class AcademyForm(BaseForm):
     """Academy registration form"""
-    pass
+    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png'], "Images only")])
 
 
 class SponsorForm(BaseForm):
     """Sponsor registration form"""
 
     organization = StringField('Organization')
+    profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 'png'], "Images only")])
