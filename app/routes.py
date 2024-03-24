@@ -37,15 +37,15 @@ def sign_up():
     field = request.form['role']
 
     if field == 'Football player':
-        return redirect(url_for('/signup/player'))
+        return redirect(url_for('player_signup'))
     elif field == 'Scout':
-        return redirect(url_for('scout_form'))
+        return redirect(url_for('scout_signup'))
     elif field == 'Football club':
-        return redirect(url_for('club_form'))
+        return redirect(url_for('club_signup'))
     elif field == 'Football Academy':
-        return redirect(url_for('football_form'))
+        return redirect(url_for('football_signup'))
     elif field == 'Sponsor':
-        return redirect(url_for('sponsor_form'))
+        return redirect(url_for('sponsor_signup'))
     else:
         flash("Invalid option")    
 
