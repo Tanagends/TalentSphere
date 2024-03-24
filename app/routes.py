@@ -1,3 +1,4 @@
+"""Our views for the Talent Sphere Application"""
 from flask import render_template, redirect, url_for, flash
 from flask_login import current_user
 from flask import request
@@ -9,7 +10,11 @@ from app.forms import ClubForm
 from app.forms import AcademyForm
 from app.forms import SponsorForm
 from app.models.player import Player
-from app.process import base_fields
+from app.models.scout import Scout
+from app.models.club import Club
+from app.models.academy import Academy
+from app.models.sponsor import Sponsor
+from app.process import base_fields, user_signup_helper
 from app import app
 from app import db
 
@@ -18,7 +23,9 @@ from app import db
 @app.route('/index')
 def index():
     """Landing page"""
+
     return f"Hello talentsphere"
+
 
 @app.route('/signup', methods=["GET", "POST"])
 def sign_up():
@@ -40,26 +47,44 @@ def sign_up():
     elif field == 'Sponsor':
         return redirect(url_for('sponsor_form'))
     else:
-        flash("Invalid option")
-    
-
+        flash("Invalid option")    
 
 
 @app.route('/signup/player', methods=['GET', 'POST'])
-def player_form():
-    """This function handle the logic for the player form"""
+def player_signup():
+    """Handles the logic for the player signup"""
  
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
+    return user_signup_helper(PlayerForm, Player, 'player_signup.html', 'Football Player')
 
-    form = PlayerForm()
-    if form.validate_on_submit():
-        player_dict = base_fields(form)
-        player_user = Player(**player_dict)
-        player_user.set_password(player.password.data)
-        db.session.add(player_user)
-        db.session.commit()
-        flash('Congratulations, you are now registered user!')
-        return redirect(url_for('index'))
 
-    return render_template('signup.html', title='player signup', form=player)
+@app.route('/signup/scout', methods=['GET', 'POST'])
+def scout_signup():
+    """Handles the logic for the scout signup"""
+ 
+    return user_signup_helper(ScoutForm, Scout, 'scout_signup.html', 'Football Scout')
+
+
+@app.route('/signup/club', methods=['GET', 'POST'])
+def club_signup():
+    """Handles the logic for the club signup"""
+ 
+    return user_signup_helper(ClubForm, Club, 'club_signup.html', 'Football Club')
+
+
+@app.route('/signup/academy', methods=['GET', 'POST'])
+def academy_signup():
+    """Handles the logic for the academy signup"""
+ 
+    return user_signup_helper(AcademyForm, Academy, 'academy_signup.html', 'Football Academy')
+
+
+@app.route('/signup/sponsor', methods=['GET', 'POST'])
+def sponsor_form():
+    """Handles the logic for the sponsor signup"""
+ 
+    return user_signup_helper(SponsorForm, Sponsor, 'sponsor_signup.html', 'Football Sponsor')
+
+
+@app.route('/login')
+def login():
+    """Logs in the user"""

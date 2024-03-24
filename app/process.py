@@ -1,10 +1,12 @@
 """
   This module has all our helper functions for the views / routes
 """
-from flask import redirect, url_for
+from flask import redirect, url_for, flash
 from uuid import uuid4
 import os
 from werkzeug.utils import secure_filename
+from app import db
+
 
 def upload_profile_image(profile):
     """Uploads the profile picture and returns the name"""
@@ -15,17 +17,6 @@ def upload_profile_image(profile):
     profile.save(filepath)
     return filepath
 
-def process(field):
-    if field == 'Football player':
-        return redirect(url_for('/signup/player'))
-    elif field == 'Scout':
-        return redirect(url_for('scout_form'))
-    elif field == 'Football club':
-        return redirect(url_for('club_form'))
-    elif field == 'Football Academy':
-        return redirect(url_for('football_form'))
-    elif field == 'Sponsor':
-        return redirect(url_for('sponsor_form'))
 
 def base_fields(form):
     """Returns a dict of a base form of fields common to all users"""
@@ -52,7 +43,7 @@ def base_fields(form):
         if form.data.get('position') and distinct_fields:
             distinct_fields['position'] = form.position.data
 
-    #Checking if they are an organization to add an organization and image field 
+    #Checking if they are an organization to add organization and image fields
     elif form.data.get('organization'):
 
         distinct_fields = {
@@ -60,10 +51,29 @@ def base_fields(form):
                 'profile_image_path': upload_profile_image(form.profile_image_path.data)
         }
     
-    #They are a club or academy, and this sets their unique fields
+    #Checking if they are a club or academy, and setting their unique field
     else:
         distinct_fields = {
                 'logo_path' = upload_profile_image(form.profile_image_path.data)
         }
 
     return common_fields_dict.update(distinct_fields)
+
+
+def user_signup_helper(Form, User, htm, usr):
+    """Generic user creation and database save function"""
+
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+
+    form = Form()
+    if form.validate_on_submit():
+        user_dict = base_fields(form)
+        user = User(**user_dict)
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now registered user!')
+        return redirect(url_for('index'))
+
+    return render_template(htm, user=usr, form=form)
