@@ -78,3 +78,10 @@ class SponsorForm(BaseForm):
 
     organization = StringField('Organization')
     profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 'png'], "Images only")])
+
+
+class LoginForm(FlaskForm):
+    """Login form"""
+
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    password PasswordField('Password', validators=[DataRequired()])
