@@ -84,4 +84,4 @@ class LoginForm(FlaskForm):
     """Login form"""
 
     email = StringField('Email', validators=[DataRequired(), Email()])
-    password PasswordField('Password', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])

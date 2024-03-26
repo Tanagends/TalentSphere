@@ -1,5 +1,5 @@
 """Our views for the Talent Sphere Application"""
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import current_user, login_user, logout_user
 from flask import request
 from app.forms import BaseForm
@@ -15,10 +15,10 @@ from app.models.club import Club
 from app.models.academy import Academy
 from app.models.sponsor import Sponsor
 from app.process import base_fields, user_signup_helper
-from app import app
 from app import db
-from . import login_manager
+from app import login_manager
 
+app = Blueprint('main', __name__)
 
 @login_manager.user_loader
 def load_user(user_id):

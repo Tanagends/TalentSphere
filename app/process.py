@@ -54,7 +54,7 @@ def base_fields(form):
     #Checking if they are a club or academy, and setting their unique field
     else:
         distinct_fields = {
-                'logo_path' = upload_profile_image(form.profile_image_path.data)
+                'logo_path': upload_profile_image(form.profile_image_path.data)
         }
 
     return common_fields_dict.update(distinct_fields)
