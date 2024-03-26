@@ -1,7 +1,8 @@
 """
   This module has all our helper functions for the views / routes
 """
-from flask import redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash
+from flask_login import current_user
 from uuid import uuid4
 import os
 from werkzeug.utils import secure_filename
