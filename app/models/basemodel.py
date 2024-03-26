@@ -23,8 +23,8 @@ class BaseModel(db.Model):
     
     def set_password(self, passwd):
         """set a password for all other classes to inherit"""
-        self.password_hash = generate_password_hash(passwd)
+        self.password = generate_password_hash(passwd)
     
     def check_password(self, passwd):
         """check password to confirm before login in"""
-        return check_password_hash(self.password_hash, passwd)
+        return check_password_hash(self.password, passwd)
