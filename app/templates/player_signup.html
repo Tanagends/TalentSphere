@@ -1,4 +1,4 @@
-{% extends layout.html %}
+{% extends "layout.html" %}
 
 {% block surname %}
     {{ form.surname.label }} {{ form.surname }}
@@ -18,4 +18,5 @@
 {% block uploads %}
     {{ form.profile_image_path.label }} <br>
     {{ form.profile_image_path }}
+    <p>{{ form.submit() }}</p>
 {% endblock uploads %}

@@ -31,13 +31,13 @@
         <fieldset>
             <legend>Location</legend>
                 {{ form.city.label}} {{ form.city }}
-                {{% for error in form.city.errors %}}
+                {% for error in form.city.errors %}
                     <span>error</span>
-                {{% endfor %}}
+                {% endfor %}
                 {{ form.country.label }} {{ form.country }}
-                {{% for error in form.country.errors %}}
+                {% for error in form.country.errors %}
                     <span>error</span>
-                {{% endfor %}}
+                {% endfor %}
         </fieldset>
         <fieldset>
             <legend>Password Setup</legend>

@@ -46,18 +46,25 @@ def sign_up():
     if request.method == "GET":
         return render_template("signup.html")
     
-    field = request.form['role']
-
+    field = request.form.get('role')
+    print(field)
+    
+    if field is None:
+        flash('please select a role')
+        return redirect(url_for('signup'))
+    
+    field = field.capitalize()
+    
     if field == 'Football player':
-        return redirect(url_for('player_signup'))
+        return redirect(url_for('main.player_signup'))
     elif field == 'Scout':
-        return redirect(url_for('scout_signup'))
+        return redirect(url_for('main.scout_signup'))
     elif field == 'Football club':
-        return redirect(url_for('club_signup'))
+        return redirect(url_for('main.club_signup'))
     elif field == 'Football Academy':
-        return redirect(url_for('football_signup'))
+        return redirect(url_for('main.academy_signup'))
     elif field == 'Sponsor':
-        return redirect(url_for('sponsor_signup'))
+        return redirect(url_for('main.sponsor_signup'))
     else:
         flash("Invalid option")    
 
@@ -106,7 +113,7 @@ def login():
         users = [Player, Scout, Club, Academy, Sponsor]
         for User in users:
             usr = User.query.filter(email=form.data.email).first()
-            if usr and user.check_password(form.data.password):
+            if usr and usr.check_password(form.data.password):
                 login_user(usr)
                 flash("You are now signed in")
                 return render_template(url_for('index'))
