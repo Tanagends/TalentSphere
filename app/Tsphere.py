@@ -1,4 +1,4 @@
-from app import db, app
+from app import main_bp, db
 from app.models.basemodel import BaseModel
 from app.models.academy import Academy
 from app.models.club import Club

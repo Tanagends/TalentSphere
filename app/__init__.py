@@ -14,7 +14,7 @@ def create_app():
     app.config.from_object(Config)
     from app.routes import app as main_bp
     app.register_blueprint(main_bp)
-    db .init_app(app)
+    db.init_app(app)
     migrate = Migrate(app, db)
     login_manager.init_app(app)
 
