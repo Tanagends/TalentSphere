@@ -2,6 +2,7 @@
 
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
+from wtforms.validators import Email
 from wtforms import StringField, PasswordField, SubmitField, DateField, IntegerField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from app.models.player import Player
@@ -45,13 +46,6 @@ class ScoutPlayerForm(BaseForm):
     club = StringField('Club', validators=[Length(min=2, max=36)])
     academy = StringField('Academy', validators=[Length(min=2, max=36)])
     profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 'png'], "Images only")])
-    
-    def validate_name(self, surname):
-        """Check if surname already on the database"""
-        s_user = db.session.query(Scout).filter_by(Scout.surname == surname.data).all()
-        
-        if s_user is not None:
-            raise ValidationError('Surname already exist, use different surname')
     
 
 class PlayerForm(ScoutPlayerForm):
