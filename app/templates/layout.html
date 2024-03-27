@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Welcome to our sign up for {{ user }}! The sky is about to be the limit!!</h1>
-    <form>
+    <form action="{% block form_action %}{% endblock %}" method='post'>
         <fieldset>
             <legend>Personal Information</legend>
                 {{ form.hidden_tag() }}
@@ -38,6 +38,10 @@
                 {% for error in form.country.errors %}
                     <span>error</span>
                 {% endfor %}
+                {{ form.postal_code.label }} {{ form.postal_code }}
+                {% for error in form.postal_code.errors %}
+                    <span>error</span>
+                {% endfor %}
         </fieldset>
         <fieldset>
             <legend>Password Setup</legend>
@@ -45,7 +49,7 @@
             {% for error in form.password.errors %}
                 <span>error</span>
             {% endfor %}
-            {{ form.confirm_password }} {{ form.password }}
+            {{ form.confirm_password.label }} {{ form.password }}
             {% for error in form.confirm_password.errors %}
                 <span>error</span>
             {% endfor %}
@@ -54,6 +58,7 @@
             <legend>Image Uploads</legend>
             {% block uploads %}{% endblock uploads%}
         </fieldset>
+	{{ form.submit() }}
     </form>
     
 </body>

@@ -3,7 +3,6 @@ from datetime import datetime, timezone
 from app import db
 
 
-
 class Video(db.Model):
     
     __tablename__ = "videos"
@@ -14,5 +13,3 @@ class Video(db.Model):
     video_path = db.Column(db.String(255))
     video_thumbnail_path = db.Column(db.String(255))
     player_id = db.Column(db.String(255), db.ForeignKey('players.id'))
-    
-    # video = db.relationship('Video', backref='player')

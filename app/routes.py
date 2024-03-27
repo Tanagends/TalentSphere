@@ -47,7 +47,6 @@ def sign_up():
         return render_template("signup.html")
     
     field = request.form.get('role')
-    print(field)
     
     if field is None:
         flash('please select a role')
@@ -98,7 +97,7 @@ def academy_signup():
 
 
 @app.route('/signup/sponsor', methods=['GET', 'POST'])
-def sponsor_form():
+def sponsor_signup():
     """Handles the logic for the sponsor signup"""
  
     return user_signup_helper(SponsorForm, Sponsor, 'sponsor_signup.html', 'Football Sponsor')

@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block form_action %}
+	/signup/player
+{% endblock form_action %}
+
 {% block surname %}
     {{ form.surname.label }} {{ form.surname }}
     {% for error in form.surname.errors %}
@@ -18,5 +22,4 @@
 {% block uploads %}
     {{ form.profile_image_path.label }} <br>
     {{ form.profile_image_path }}
-    <p>{{ form.submit() }}</p>
 {% endblock uploads %}

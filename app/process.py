@@ -1,7 +1,7 @@
 """
   This module has all our helper functions for the views / routes
 """
-from flask import render_template, redirect, url_for, flash
+from flask import render_template, redirect, url_for, flash, request
 from flask_login import current_user
 from uuid import uuid4
 import os
@@ -63,11 +63,11 @@ def base_fields(form):
 
 def user_signup_helper(Form, User, htm, usr):
     """Generic user creation and database save function"""
-
     if current_user.is_authenticated:
         return redirect(url_for('index'))
 
     form = Form()
+
     if form.validate_on_submit():
         user_dict = base_fields(form)
         user = User(**user_dict)

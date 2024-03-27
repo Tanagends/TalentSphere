@@ -5,7 +5,7 @@ from flask_migrate import Migrate
 from flask_login import LoginManager
 
 db = SQLAlchemy()
-from app.models import Scout, Player, Club, Sponsor, Academy
+from app.models import Scout, Player, Club, Sponsor, Academy, Video
 login_manager = LoginManager()
 
 def create_app():

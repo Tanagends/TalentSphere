@@ -1,5 +1,9 @@
 {% extends "layout.html" %}
 
+{% block form_action %}
+	/signup/sponsor
+{% endblock form_action %}
+
 {% block surname %}
 
     {{ form.organization.label }} {{ form.organization }}
