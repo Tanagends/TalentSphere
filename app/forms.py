@@ -22,9 +22,9 @@ class BaseForm(FlaskForm):
     country = StringField('Country', validators=[
                           DataRequired(), Length(min=2, max=36)])
     postal_code = IntegerField('Postal code')
-    password = PasswordField('Password', validators=[DataRequired()])
-    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(),
-                                                                     EqualTo('password', message='Passwords must match.')])
+    password = PasswordField('Password', validators=[DataRequired(),
+                             EqualTo('confirm_password', message='Passwords must match.')])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired()])
     submit = SubmitField('Register')
 
     def validate_email(self, email):

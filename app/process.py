@@ -11,6 +11,8 @@ from app import db
 
 def upload_profile_image(profile):
     """Uploads the profile picture and returns the name"""
+    if not profile:
+        return
     filen, ext = os.path.splitext(profile.filename)
     filenam = os.path.join(str(uuid4()), ext)
     filename = secure_filename(filenam)
@@ -58,7 +60,8 @@ def base_fields(form):
                 'logo_path': upload_profile_image(form.profile_image_path.data)
         }
 
-    return common_fields_dict.update(distinct_fields)
+    common_fields_dict.update(distinct_fields)
+    return common_fields_dict
 
 
 def user_signup_helper(Form, User, htm, usr):
