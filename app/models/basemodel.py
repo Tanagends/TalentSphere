@@ -19,7 +19,7 @@ class BaseModel(db.Model):
     city = db.Column(db.String(120))
     country = db.Column(db.String(120))
     postal_code = db.Column(db.Integer)
-    password = db.Column(db.String(120))
+    password = db.Column(db.String(2048))
     
     def set_password(self, passwd):
         """set a password for all other classes to inherit"""
