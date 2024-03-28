@@ -10,7 +10,7 @@ class Player(BaseModel):
     __tablename__ = 'players'
 
     surname = db.Column(db.String(120), nullable=False)
-    DOB = db.Column(Date, nullable=False)
+    DOB = db.Column(db.Date, nullable=False)
     position = db.Column(db.String(120))
     club = db.Column(db.String(120))
     academy = db.Column(db.String(120))

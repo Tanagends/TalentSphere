@@ -15,7 +15,7 @@ class Scout(BaseModel):
     """
 
     surname = db.Column(db.String(120), nullable=False)
-    DOB = db.Column(Date, nullable=False)
+    DOB = db.Column(db.Date, nullable=False)
     profile_image_path = db.Column(db.String(255))
     club_id = db.Column(db.String(120), db.ForeignKey('clubs.id'), nullable=True)
     academy_id = db.Column(db.String(120), db.ForeignKey('academies.id'), nullable=True)

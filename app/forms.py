@@ -32,9 +32,9 @@ class BaseForm(FlaskForm):
         """Check if email is already on the database"""
         users = [Sponsor, Club, Academy, Player, Scout]
         for User in users:
-            user = User.query.filter_by(email=email).first()
-        if user is not None:
-            raise ValidationError('please use a different email address')
+            user = User.query.filter_by(email=email.data).first()
+            if user is not None:
+                raise ValidationError('please use a different email address')
 
 
 class ScoutPlayerForm(BaseForm):

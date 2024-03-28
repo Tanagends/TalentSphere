@@ -58,7 +58,7 @@ def base_fields(form):
     #Checking if they are a club or academy, and setting their unique field
     else:
         distinct_fields = {
-                'logo_path': upload_profile_image(form.profile_image_path.data)
+                'logo_path': upload_profile_image(form.logo_path.data)
         }
 
     common_fields_dict.update(distinct_fields)
@@ -80,6 +80,6 @@ def user_signup_helper(Form, User, htm, usr):
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now registered user!')
-        return redirect(url_for('index'))
+        return redirect(url_for('main.index'))
 
     return render_template(htm, user=usr, form=form)

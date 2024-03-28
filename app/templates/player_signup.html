@@ -5,18 +5,32 @@
 {% endblock form_action %}
 
 {% block surname %}
+
     {{ form.surname.label }} {{ form.surname }}
     {% for error in form.surname.errors %}
         <span>error</span>
     {% endfor %}
+
     {{ form.DOB.label }} {{ form.DOB }}
     {% for error in form.DOB.errors %}
         <span>error</span>
     {% endfor %}
+
+    {{ form.position.label }} {{ form.position }}
+    {% for error in form.position.errors %}
+        <span>error</span>
+    {% endfor %}
+
     {{ form.club.label }} {{ form.club }}
     {% for error in form.club.errors %}
         <span>error</span>
     {% endfor %}
+
+    {{ form.academy.label }} {{ form.academy }}
+    {% for error in form.academy.errors %}
+        <span>error</span>
+    {% endfor %}
+
 {% endblock surname %}
 
 {% block uploads %}

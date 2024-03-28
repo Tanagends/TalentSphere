@@ -103,7 +103,7 @@ def sponsor_signup():
     return user_signup_helper(SponsorForm, Sponsor, 'sponsor_signup.html', 'Football Sponsor')
 
 
-@app.route('/login')
+@app.route('/login', methods=["GET", "POST"])
 def login():
     """Logs in the user"""
 
@@ -115,7 +115,7 @@ def login():
             if usr and usr.check_password(form.data.password):
                 login_user(usr)
                 flash("You are now signed in")
-                return render_template(url_for('index'))
+                return render_template(url_for('main.index'))
 
         return render_template('login.html', error='Invalid email or password')
 
