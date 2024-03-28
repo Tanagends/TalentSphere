@@ -119,4 +119,4 @@ def login():
 
         return render_template('login.html', error='Invalid email or password')
 
-    return render_template('login.html')
+    return render_template('login.html', form=form)

@@ -10,7 +10,7 @@ class BaseModel(db.Model):
 
     __abstract__ = True
 
-    id = db.Column(db.String(120), primary_key=True, default=uuid4())
+    id = db.Column(db.String(120), primary_key=True, default= lambda: str(uuid4()))
     created_at = db.Column(db.DateTime, default=datetime.now(timezone.utc))
     updated_at = db.Column(db.DateTime, default=datetime.now(timezone.utc), onupdate=datetime.now(timezone.utc))
     email = db.Column(db.String(120), nullable=False)
