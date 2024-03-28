@@ -30,6 +30,7 @@ def base_fields(form):
         'phone_number': form.phone_number.data,
         'city': form.city.data,
         'country': form.country.data,
+        'postal_code': form.postal_code.data
     }
 
     #Checking if they are a player or scout to add the common fields
@@ -73,6 +74,7 @@ def user_signup_helper(Form, User, htm, usr):
 
     if form.validate_on_submit():
         user_dict = base_fields(form)
+        print(user_dict)
         user = User(**user_dict)
         user.set_password(form.password.data)
         db.session.add(user)

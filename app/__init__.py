@@ -29,7 +29,7 @@ def create_app():
                 return usr
         return None
 
-    with app.app_context():
-        db.create_all
+    # with app.app_context():
+    #     db.create_all
     
     return app
