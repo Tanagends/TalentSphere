@@ -38,14 +38,19 @@ def base_fields(form):
         distinct_fields = {
                 'surname': form.surname.data,
                 'DOB': form.DOB.data,
-                'club': form.club.data,
-                'academy': form.academy.data,
                 'profile_image_path': upload_profile_image(form.profile_image_path.data)
         }
 
-        # Adding the position field if it's a player
+        # Adding the position, club, academy fields if it's a player
         if form.data.get('position') and distinct_fields:
             distinct_fields['position'] = form.position.data
+            distinct_fields['club'] = form.club.data
+            distinct_fields['academy'] = form.academy.data
+
+        #Else adding club or academy id's for a scout
+        else:
+            distinct_fields['club_id'] = form.club.data if form.club.data != "None" else None
+            distinct_fields['academy_id'] = form.academy.data if form.academy.data != "None" else None
 
     #Checking if they are an organization to add organization and image fields
     elif form.data.get('organization'):
