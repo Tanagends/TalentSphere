@@ -111,8 +111,8 @@ def login():
     if form.validate_on_submit():
         users = [Player, Scout, Club, Academy, Sponsor]
         for User in users:
-            usr = User.query.filter(email=form.data.email).first()
-            if usr and usr.check_password(form.data.password):
+            usr = User.query.filter(email=form.email.data).first()
+            if usr and usr.check_password(form.password.data):
                 login_user(usr)
                 flash("You are now signed in")
                 return render_template(url_for('main.index'))
