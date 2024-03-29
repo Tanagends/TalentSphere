@@ -1,6 +1,6 @@
 """Our views for the Talent Sphere Application"""
 from flask import render_template, redirect, url_for, flash, Blueprint
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from flask import request
 from app.forms import BaseForm
 from app.forms import ScoutPlayerForm
@@ -9,6 +9,7 @@ from app.forms import ScoutForm
 from app.forms import ClubForm
 from app.forms import AcademyForm
 from app.forms import SponsorForm, LoginForm
+from app.models.basemodel import BaseModel
 from app.models.player import Player
 from app.models.scout import Scout
 from app.models.club import Club
@@ -18,7 +19,7 @@ from app.process import base_fields, user_signup_helper
 from app import db
 from app import login_manager
 
-app = Blueprint('main', __name__)
+main_app = Blueprint('main', __name__)
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -31,15 +32,16 @@ def load_user(user_id):
     return None
 
 
-@app.route('/')
-@app.route('/index')
+@main_app.route('/')
+@main_app.route('/index')
+@login_required
 def index():
     """Landing page"""
 
     return f"Hello talentsphere"
 
 
-@app.route('/signup', methods=["GET", "POST"])
+@main_app.route('/signup', methods=["GET", "POST"])
 def sign_up():
     """The signup page to get the user role"""
 
@@ -50,7 +52,7 @@ def sign_up():
     
     if field is None:
         flash('please select a role')
-        return redirect(url_for('signup'))
+        return redirect(url_for('signup.html'))
     
     field = field.capitalize()
     
@@ -68,55 +70,74 @@ def sign_up():
         flash("Invalid option")    
 
 
-@app.route('/signup/player', methods=['GET', 'POST'])
+@main_app.route('/signup/player', methods=['GET', 'POST'])
 def player_signup():
     """Handles the logic for the player signup"""
  
     return user_signup_helper(PlayerForm, Player, 'player_signup.html', 'Football Player')
 
 
-@app.route('/signup/scout', methods=['GET', 'POST'])
+@main_app.route('/signup/scout', methods=['GET', 'POST'])
 def scout_signup():
     """Handles the logic for the scout signup"""
  
     return user_signup_helper(ScoutForm, Scout, 'scout_signup.html', 'Football Scout')
 
 
-@app.route('/signup/club', methods=['GET', 'POST'])
+@main_app.route('/signup/club', methods=['GET', 'POST'])
 def club_signup():
     """Handles the logic for the club signup"""
  
     return user_signup_helper(ClubForm, Club, 'club_signup.html', 'Football Club')
 
 
-@app.route('/signup/academy', methods=['GET', 'POST'])
+@main_app.route('/signup/academy', methods=['GET', 'POST'])
 def academy_signup():
     """Handles the logic for the academy signup"""
  
     return user_signup_helper(AcademyForm, Academy, 'academy_signup.html', 'Football Academy')
 
 
-@app.route('/signup/sponsor', methods=['GET', 'POST'])
+@main_app.route('/signup/sponsor', methods=['GET', 'POST'])
 def sponsor_signup():
     """Handles the logic for the sponsor signup"""
  
     return user_signup_helper(SponsorForm, Sponsor, 'sponsor_signup.html', 'Football Sponsor')
 
 
-@app.route('/login', methods=["GET", "POST"])
+@main_app.route('/login', methods=["GET", "POST"])
 def login():
     """Logs in the user"""
+    
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('main.index'))
+
 
     form = LoginForm()
     if form.validate_on_submit():
-        users = [Player, Scout, Club, Academy, Sponsor]
-        for User in users:
-            usr = User.query.filter(email=form.email.data).first()
-            if usr and usr.check_password(form.password.data):
-                login_user(usr)
-                flash("You are now signed in")
-                return render_template(url_for('main.index'))
-
-        return render_template('login.html', error='Invalid email or password')
+        # Query the Player model for the user
+        user = Player.query.filter_by(email=form.email.data).first()
+    
+        # If user is not found in the Player model, try other user models
+        if user is None or not user.check_password(form.password.data):
+            users = [Scout, Club, Academy, Sponsor]
+            for UserModel in users:
+                user = UserModel.query.filter_by(email=form.email.data).first()
+                if user and user.check_password(form.password.data):
+                    break
+            else:
+                flash('Invalid email or password')
+                return redirect(url_for('main.login'))
+        
+        # Log in the user
+        login_user(user)
+        flash('You are now signed in')
+        return redirect(url_for('main.index'))
 
     return render_template('login.html', form=form)
+
+
+@main_app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))

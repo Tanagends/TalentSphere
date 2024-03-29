@@ -67,8 +67,8 @@ def base_fields(form):
 
 def user_signup_helper(Form, User, htm, usr):
     """Generic user creation and database save function"""
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
+    # if current_user.is_authenticated:
+    #     return redirect(url_for('main.index'))
 
     form = Form()
 
@@ -80,6 +80,6 @@ def user_signup_helper(Form, User, htm, usr):
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now registered user!')
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main.login'))
 
     return render_template(htm, user=usr, form=form)

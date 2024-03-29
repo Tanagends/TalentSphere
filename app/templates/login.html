@@ -7,13 +7,35 @@
 </head>
 <body>
     <form action="/login" method="post">
-        <fieldset>
+        <!-- <fieldset>
 		<legend><h1>Login</h1></legend>
 			{{ form.email.label }} {{ form.email() }}
 			<br>
 			{{ form.password.label }} {{ form.password() }}
 			{{ form.submit() }}
-        </fieldset>
+        </fieldset> -->
+
+        {{ form.hidden_tag() }}
+        <!--Username field-->
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}<br>
+            {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]<br></span>
+            {% endfor %}
+        </p>
+    
+        <!--Password field-->
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=32) }}<br>
+            {% for error in form.password.errors %}
+            <span style="color: red">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+
+        <!--Submit-->
+        <p>{{ form.submit() }}</p>
     </form>
 </body>
 </html>
