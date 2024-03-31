@@ -51,8 +51,9 @@ class ScoutPlayerForm(BaseForm):
 class PlayerForm(ScoutPlayerForm):
     """Player registration form"""
 
-    position = StringField('Position', validators=[DataRequired(),
-                           Length(min=2, max=36)])
+    options = [("forward", "Forward"), ("midfielder", "Midfielder"),
+               ("defender", "Defender"), ("goalkeeper", "Goalkeeper")]
+    position = SelectField('Position', choices=options, validators=[DataRequired()])
 
 
 class ScoutForm(ScoutPlayerForm):
