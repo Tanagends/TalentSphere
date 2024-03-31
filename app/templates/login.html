@@ -63,7 +63,7 @@
           <h2 class="card-title text-center">Login</h2>
           <form action="/login" method="POST">
             <div class="form-group">
-              <label for="email">Email</label>
+              <!--label for="email">Email</label-->
               <!-- Flask/Jinja code for email field -->
               {{ form.email.label }}
               {{ form.email(class="form-control", id="email") }}
@@ -72,7 +72,7 @@
               {% endfor %}
             </div>
             <div class="form-group">
-              <label for="password">Password</label>
+              <!--label for="password">Password</label-->
               <!-- Flask/Jinja code for password field -->
               {{ form.password.label }}
               {{ form.password(class="form-control", id="password") }}
@@ -81,7 +81,8 @@
               {% endfor %}
             </div>
             <!-- Submit button -->
-            <button type="submit" class="btn btn-primary btn-block">Login</button>
+	    {{ form.submit() }}
+            <!--button type="submit" class="btn btn-primary btn-block">Login</button-->
           </form>
         </div>
       </div>
