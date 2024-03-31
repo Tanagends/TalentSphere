@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User SignUp</title>
-    <!-- Link to a modern CSS framework like Bootstrap for styling -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <!-- Custom CSS for additional styling -->
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us</title>
+  <!-- Link to a modern CSS framework like Bootstrap for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS for additional styling -->
+  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
 </head>
 <body>
 
-<!-- Our nav bar with signup or login option -->
+<!-- navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">Talent Sphere</a>
@@ -43,7 +43,8 @@
           <a class="nav-link" href="network.html">Network</a>
         </li>
         <li class="nav-item">
-           <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link" href="about.html">About Us</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact Us</a>
         </li>
@@ -61,74 +62,49 @@
   </div>
 </nav>
 
-<!-- Main Content -->
-<div class="container mt-5">
-    <h1>Welcome to our sign up for {{ user }}! The sky is about to be the limit!!</h1>
-    <form action="{% block form_action %}{% endblock %}" method='post'>
-        <fieldset>
-            <legend>Personal Information</legend>
-            {{ form.hidden_tag() }}
-            {{ form.name.label }} {{ form.name }}
-            {% for error in form.name.errors %}
-                <span>error</span>
-            {% endfor %}
-            {{ form.surname.label }} {{ form.surname }}
-            {% for error in form.surname.errors %}
-                <span>error</span>
-            {% endfor %}
-        </fieldset>
-        <fieldset>
-            <legend>Contact Details</legend>
-            {{ form.email.label }} {{ form.email }}
-            {% for error in form.email.errors %}
-                <span>error</span>
-            {% endfor %}
-            {{ form.phone_number.label }} {{ form.phone_number }}
-            {% for error in form.phone_number.errors %}
-                <span>error</span>
-            {% endfor %}
-        </fieldset>
-        <fieldset>
-            <legend>Location</legend>
-            {{ form.city.label}} {{ form.city }}
-            {% for error in form.city.errors %}
-                <span>error</span>
-            {% endfor %}
-            {{ form.country.label }} {{ form.country }}
-            {% for error in form.country.errors %}
-                <span>error</span>
-            {% endfor %}
-            {{ form.postal_code.label }} {{ form.postal_code }}
-            {% for error in form.postal_code.errors %}
-                <span>error</span>
-            {% endfor %}
-        </fieldset>
-        <fieldset>
-            <legend>Password Setup</legend>
-            {{ form.password.label }} {{ form.password }}
-            {% for error in form.password.errors %}
-                <span>error</span>
-            {% endfor %}
-            {{ form.confirm_password.label }} {{ form.confirm_password }}
-            {% for error in form.confirm_password.errors %}
-                <span>error</span>
-            {% endfor %}
-        </fieldset>
-        <fieldset>
-            <legend>Image Uploads</legend>
-            {% block uploads %}{% endblock uploads %}
-        </fieldset>
-        {{ form.submit() }}
+<!-- Contact Container -->
+<div class="contact-container">
+  <div class="container">
+    <h2>Hi, what can we help you with?</h2>
+    <p>Feel free to reach out to us with any questions, feedback, or inquiries.</p>
+    <!-- Contact Form -->
+    <form class="contact-form" action="contact.php" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
     </form>
+  </div>
 </div>
+
+<!-- FAQs Container -->
+<div class="faq-container">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <p class="faq-question" onclick="toggleFAQ(this)">Q: How can your platform help me as a talented soccer player?</p>
+      <p class="faq-answer">A: Our platform connects talented soccer players with opportunities for sponsorship, club signings, and placements in reputable soccer academies. We provide a platform for showcasing your skills and connecting with scouts, agents, and sponsors.</p>
+    </div>
+    <!-- to add more FAQ items as needed -->
+  </div>
+</div>
+
 
 <!-- Footer section -->
 <footer class="bg-dark text-white py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-4 mb-4 mb-md-0">
-        <h5 class="text-uppercase">About Talent Sphere
-        </h5>
+        <h5 class="text-uppercase">About Talent Sphere</h5>
         <p class="text-muted">Talent Sphere is a platform dedicated to connecting talented individuals with opportunities in the world of sports, particularly soccer. We provide a curated space for players, clubs, mentors, and sponsors to come together and foster growth.</p>
       </div>
       <div class="col-md-4 mb-4 mb-md-0">
@@ -168,4 +144,3 @@
 
 </body>
 </html>
-

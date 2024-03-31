@@ -1,11 +1,69 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talent Sphere</title>
+  <!-- Link to a modern CSS framework like Bootstrap for styling -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <!-- Custom CSS for additional styling -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+<!-- Our nav bar with signup or login option -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTalents" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Talents
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownTalents">
+            <a class="dropdown-item" href="#">Strikers</a>
+            <a class="dropdown-item" href="#">Midfielders 2</a>
+            <a class="dropdown-item" href="#">Defenders</a>
+            <a class="dropdown-item" href="#">Goalkeepers</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="profiles.html">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="network.html">Network</a>
+        </li>
+        <li class="nav-item">
+           <a class="nav-link" href="about.html">About Us</a>
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html">Contact Us</a>
+        </li>
+      </ul>
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sign In
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#">Login</a>
+          <a class="dropdown-item" href="#">Signup</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
 
-{% block form_action %}
-	/signup/scout
-{% endblock form_action %}
-
-{% block surname %}
+<!-- Form -->
+<form action="/signup/scout" method="post">
+  {% block surname %}
     {{ form.surname.label }} {{ form.surname }}
     {% for error in form.surname.errors %}
     	<span>{{ error }}</span>
@@ -18,15 +76,64 @@
     {% for error in form.club.errors %}
     	<span>{{ error }}</span>
     {% endfor %}
-
     {{ form.academy.label }} {{ form.academy }}
     {% for error in form.academy.errors %}
     	<span>{{ error }}</span>
     {% endfor %}
-
-{% endblock surname %}
-
-{% block uploads %}
+  {% endblock surname %}
+  
+  {% block uploads %}
     {{ form.profile_image_path.label }} <br>
     {{ form.profile_image_path }}
-{% endblock uploads %}
+  {% endblock uploads %}
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<!-- Footer section -->
+<footer class="bg-dark text-white py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5 class="text-uppercase">About Talent Sphere
+        </h5>
+        <p class="text-muted">Talent Sphere is a platform dedicated to connecting talented individuals with opportunities in the world of sports, particularly soccer. We provide a curated space for players, clubs, mentors, and sponsors to come together and foster growth.</p>
+      </div>
+      <div class="col-md-4 mb-4 mb-md-0">
+        <h5 class="text-uppercase">Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Talents</a></li>
+          <li><a href="#">Clubs</a></li>
+          <li><a href="#">Mentors</a></li>
+          <li><a href="#">Sponsors</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5 class="text-uppercase mb-3">Follow Us</h5>
+        <ul class="list-inline social-icons">
+          <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-12 text-center">
+        <p class="mb-0">&copy; 2024 Talent Sphere. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
+
