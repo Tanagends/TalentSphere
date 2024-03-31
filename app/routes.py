@@ -31,20 +31,15 @@ def load_user(user_id):
             return usr
     return None
 
-@app.route('/', methods=['GET', 'POST'])
-@app.route('/index', methods=['GET', 'POST'])
-
 @main_app.route('/')
 @main_app.route('/index')
 @login_required
-
 def index():
     """Landing page"""
     if request.method == 'POST':
         # Handle POST request data here
         pass
     return render_template('index.html')
-
 
 
 @main_app.route('/signup', methods=["GET", "POST"])
