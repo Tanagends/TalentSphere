@@ -21,6 +21,28 @@ class BaseModel(db.Model):
     postal_code = db.Column(db.Integer)
     password = db.Column(db.String(2048))
     
+    is_active = db.Column(db.Boolean, default=True)
+
+    def is_active(self):
+        """Check if the user account is active"""
+        return self.is_active
+    
+    def get_id(self):
+        """Return the unique identifier for the user"""
+        return self.id
+
+    def is_authenticated(self):
+        """Check if the user is authenticated"""
+        return True  # Assuming all users are authenticated
+
+    # def is_active(self):
+    #     """Check if the user account is active"""
+    #     return True  # Assuming all user accounts are active
+
+    def is_anonymous(self):
+        """Check if the user is anonymous"""
+        return False  # Assuming no anonymous users
+    
     def set_password(self, passwd):
         """set a password for all other classes to inherit"""
         self.password = generate_password_hash(passwd)

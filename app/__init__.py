@@ -6,17 +6,23 @@ from flask_login import LoginManager
 
 db = SQLAlchemy()
 from app.models import Scout, Player, Club, Sponsor, Academy, Video
+
 login_manager = LoginManager()
 
 def create_app():
     """Creates our app instance"""
     app = Flask(__name__)
     app.config.from_object(Config)
-    from app.routes import app as main_bp
-    app.register_blueprint(main_bp)
+    
+    # Import and register blueprints
+    from app.routes import main_app
+    app.register_blueprint(main_app)
+    
+    # Initialize extensions
     db.init_app(app)
     migrate = Migrate(app, db)
     login_manager.init_app(app)
+    login_manager.login_view = 'main.login'
 
 
     @login_manager.user_loader
@@ -28,8 +34,5 @@ def create_app():
             if usr:
                 return usr
         return None
-
-    # with app.app_context():
-    #     db.create_all
     
     return app

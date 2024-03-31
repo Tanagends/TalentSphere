@@ -64,14 +64,23 @@
           <form action="/login" method="POST">
             <div class="form-group">
               <label for="email">Email</label>
-              {{ form.email.label }} 
+              <!-- Flask/Jinja code for email field -->
+              {{ form.email.label }}
               {{ form.email(class="form-control", id="email") }}
+              {% for error in form.email.errors %}
+              <span style="color: red;">[{{ error }}]<br></span>
+              {% endfor %}
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              {{ form.password.label }} 
+              <!-- Flask/Jinja code for password field -->
+              {{ form.password.label }}
               {{ form.password(class="form-control", id="password") }}
+              {% for error in form.password.errors %}
+              <span style="color: red;">[{{ error }}]<br></span>
+              {% endfor %}
             </div>
+            <!-- Submit button -->
             <button type="submit" class="btn btn-primary btn-block">Login</button>
           </form>
         </div>
@@ -79,7 +88,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Footer section -->
 <footer class="bg-dark text-white py-5">

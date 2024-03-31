@@ -3,8 +3,8 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms.validators import Email
-from wtforms import StringField, PasswordField, SubmitField, DateField, IntegerField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms import StringField, PasswordField, SubmitField, DateField, IntegerField, SelectField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional
 from app.models.player import Player
 from app.models import Scout, Club, Academy, Sponsor
 from app import db
@@ -57,7 +57,24 @@ class PlayerForm(ScoutPlayerForm):
 
 class ScoutForm(ScoutPlayerForm):
     """Scout Registration Form"""
-    pass
+    def __init__(self, *args, **kwargs):
+        super(ScoutForm, self).__init__(*args, **kwargs)
+        self.academy.choices = [(None, 'None')] + [(a.id, a.name) for a in Academy.query.all()]
+        self.club.choices = [(None, 'None')] + [(c.id, c.name) for c in Club.query.all()]
+
+    club = SelectField('Club', validators=[Optional()])
+    academy = SelectField('Academy', validators=[Optional()])
+
+    def validate(self, extra_validators=None):
+
+        if not super(ScoutForm, self).validate():
+            return False
+
+        if (self.academy.data == "None") and (self.club.data == "None"):
+            self.academy.errors.append("Please select a club or an academy")
+            self.club.errors.append("Please select a club or an academy")
+            return False
+        return True
 
 
 class ClubForm(BaseForm):
