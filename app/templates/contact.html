@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talent Sphere</title>
+  <title>Contact Us</title>
   <!-- Link to a modern CSS framework like Bootstrap for styling -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <!-- Custom CSS for additional styling -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css"> <!-- Link to external CSS file -->
 </head>
 <body>
 
-<!-- Our nav bar with signup or login option -->
+<!-- navbar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">Talent Sphere</a>
@@ -43,7 +43,8 @@
           <a class="nav-link" href="network.html">Network</a>
         </li>
         <li class="nav-item">
-           <a class="nav-link" href="about.html">About Us</a>
+            <a class="nav-link" href="about.html">About Us</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" href="contact.html">Contact Us</a>
         </li>
@@ -61,42 +62,49 @@
   </div>
 </nav>
 
-<!-- Form -->
-<form action="/signup/scout" method="post">
-  {% block surname %}
-    {{ form.surname.label }} {{ form.surname }}
-    {% for error in form.surname.errors %}
-        <span>error</span>
-    {% endfor %}
-    {{ form.DOB.label }} {{ form.DOB }}
-    {% for error in form.DOB.errors %}
-        <span>error</span>
-    {% endfor %}
-    {{ form.club.label }} {{ form.club }}
-    {% for error in form.club.errors %}
-        <span>error</span>
-    {% endfor %}
-    {{ form.academy.label }} {{ form.academy }}
-    {% for error in form.academy.errors %}
-        <span>error</span>
-    {% endfor %}
-  {% endblock surname %}
-  
-  {% block uploads %}
-    {{ form.profile_image_path.label }} <br>
-    {{ form.profile_image_path }}
-  {% endblock uploads %}
+<!-- Contact Container -->
+<div class="contact-container">
+  <div class="container">
+    <h2>Hi, what can we help you with?</h2>
+    <p>Feel free to reach out to us with any questions, feedback, or inquiries.</p>
+    <!-- Contact Form -->
+    <form class="contact-form" action="contact.php" method="post">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+      </div>
+      <button type="submit">Send Message</button>
+    </form>
+  </div>
+</div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<!-- FAQs Container -->
+<div class="faq-container">
+  <div class="container">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-item">
+      <p class="faq-question" onclick="toggleFAQ(this)">Q: How can your platform help me as a talented soccer player?</p>
+      <p class="faq-answer">A: Our platform connects talented soccer players with opportunities for sponsorship, club signings, and placements in reputable soccer academies. We provide a platform for showcasing your skills and connecting with scouts, agents, and sponsors.</p>
+    </div>
+    <!-- to add more FAQ items as needed -->
+  </div>
+</div>
+
 
 <!-- Footer section -->
 <footer class="bg-dark text-white py-5">
   <div class="container">
     <div class="row">
       <div class="col-md-4 mb-4 mb-md-0">
-        <h5 class="text-uppercase">About Talent Sphere
-        </h5>
+        <h5 class="text-uppercase">About Talent Sphere</h5>
         <p class="text-muted">Talent Sphere is a platform dedicated to connecting talented individuals with opportunities in the world of sports, particularly soccer. We provide a curated space for players, clubs, mentors, and sponsors to come together and foster growth.</p>
       </div>
       <div class="col-md-4 mb-4 mb-md-0">
@@ -136,4 +144,3 @@
 
 </body>
 </html>
-

@@ -9,7 +9,7 @@
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <!-- Custom CSS for additional styling -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
 
@@ -23,7 +23,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="/index">Home</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTalents" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -37,7 +37,7 @@
           </div>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profiles.html">Profiles</a>
+          <a class="nav-link" href="signup.html">Profiles</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="network.html">Network</a>
@@ -54,41 +54,65 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#">Login</a>
-          <a class="dropdown-item" href="#">Signup</a>
+          <a class="dropdown-item" href="">Signup</a>
         </div>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- Form -->
-<form action="/signup/scout" method="post">
-  {% block surname %}
-    {{ form.surname.label }} {{ form.surname }}
-    {% for error in form.surname.errors %}
-        <span>error</span>
-    {% endfor %}
-    {{ form.DOB.label }} {{ form.DOB }}
-    {% for error in form.DOB.errors %}
-        <span>error</span>
-    {% endfor %}
-    {{ form.club.label }} {{ form.club }}
-    {% for error in form.club.errors %}
-        <span>error</span>
-    {% endfor %}
-    {{ form.academy.label }} {{ form.academy }}
-    {% for error in form.academy.errors %}
-        <span>error</span>
-    {% endfor %}
-  {% endblock surname %}
-  
-  {% block uploads %}
-    {{ form.profile_image_path.label }} <br>
-    {{ form.profile_image_path }}
-  {% endblock uploads %}
+<!-- Image Slideshow -->
+<div id="imageCarousel" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <!-- First Slide -->
+    <div class="carousel-item active">
+      <img src="assets/img/slideshow/1.jpg" class="d-block w-100" alt="Slide 1">
+    </div>
+    <!-- Second Slide -->
+    <div class="carousel-item">
+      <img src="assets/img/slideshow/2.jpg" class="d-block w-100" alt="Slide 2">
+    </div>
+    <!-- Third Slide -->
+    <div class="carousel-item">
+      <img src="assets/img/slideshow/3.jpg" class="d-block w-100" alt="Slide 3">
+    </div>
+    <!-- Fourth Slide -->
+    <div class="carousel-item">
+      <img src="assets/img/slideshow/4.jpg" class="d-block w-100" alt="Slide 4">
+    </div>
+    <!-- Fifth Slide -->
+    <div class="carousel-item">
+      <img src="assets/img/slideshow/5.jpg" class="d-block w-100" alt="Slide 5">
+    </div>
+    <!-- Sixth Slide -->
+    <div class="carousel-item">
+      <img src="assets/img/slideshow/6.jpg" class="d-block w-100" alt="Slide 6">
+    </div>
+  </div>
+  <!-- Carousel Controls -->
+  <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+<!-- Main Content - Talents Showcase -->
+<div class="container mt-5">
+  <div class="row">
+  
+    <!-- Video Showcase -->
+    <div class="col-lg-9">
+      <div class="row">
+        <!-- Video Cards Go Here -->
+        <!-- Tanatswa or Eirc to create a loop in the backend to generate these cards dynamically -->
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Footer section -->
 <footer class="bg-dark text-white py-5">

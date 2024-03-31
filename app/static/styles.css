@@ -1,0 +1,441 @@
+/* Common styling for navigation bars */
+.navbar {
+  background-color: #333;
+  overflow: hidden;
+  position: relative;
+  z-index: 1000;
+}
+
+/* Styling for links within navigation bars */
+.navbar a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+/* Hover effect for links within navigation bars */
+.navbar a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Styling for dropdown menu */
+.dropdown-menu {
+  z-index: 1001;
+}
+
+/* Styling for search container */
+.search-container {
+  float: right;
+}
+
+/* Styling for search input */
+.search-container input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  margin-right: 16px;
+  border: none;
+}
+
+/* Styling for search button */
+.search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Styling for carousel embedded images */
+#imageCarousel .embed-responsive {
+  max-height: 300px;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+/* Styling for the image carousel items */
+#imageCarousel .carousel-item {
+  height: 400px;
+}
+
+/* Styling for carousel controls */
+#imageCarousel .carousel-control-prev,
+#imageCarousel .carousel-control-next {
+  width: 5%;
+}
+
+/* Styling for carousel control icons */
+#imageCarousel .carousel-control-prev-icon,
+#imageCarousel .carousel-control-next-icon {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* Styling for carousel control hover effect */
+#imageCarousel .carousel-control-prev:hover,
+#imageCarousel .carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+/* Add margin-bottom to the carousel */
+#imageCarousel {
+  margin-bottom: 20px;
+}
+
+/* Styling for the heading container */
+.heading-container,
+.contact-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.heading-container h2,
+.contact-container h2 {
+  margin-top: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.heading-container p,
+.contact-container p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+/* Styling for form groups within contact container */
+.contact-container .form-group {
+  margin-bottom: 20px;
+}
+
+/* Styling for labels within contact container */
+.contact-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-weight: bold;
+}
+
+/* Styling for inputs and textarea within contact container */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.contact-container textarea {
+  height: 120px;
+}
+
+/* Styling for submit button within contact container */
+.contact-container button[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 16px;
+}
+
+.contact-container button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+/* Styling for FAQs container */
+.faq-container {
+  margin-top: 50px;
+  text-align: center;
+}
+
+/* Add spacing between contact form and FAQ section */
+.contact-container {
+  margin-bottom: 50px;
+}
+
+/* Styling for FAQ questions */
+.faq-question {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* Hover effect for FAQ questions */
+.faq-question:hover {
+  color: #007bff;
+}
+
+/* Styling for FAQ answers */
+.faq-answer {
+  display: none;
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* Styling for FAQ answer visible state */
+.faq-item.active .faq-answer {
+  display: block;
+}
+
+/* Footer styles */
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 50px 0;
+  width: 100%;
+}
+
+.footer h3,
+.footer p,
+.footer a {
+  color: #fff;
+}
+
+.footer a:hover {
+  color: #bbb;
+}
+
+.footer ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.footer::after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.footer {
+  margin-top: 20px;
+}
+
+/* Custom CSS for additional styling */
+/* Navbar */
+.navbar {
+  padding: 1rem 0;
+}
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-link {
+  font-size: 1.1rem;
+}
+/* Contact Container */
+.contact-container {
+  padding: 4rem 0;
+  text-align: center;
+}
+.contact-container h2 {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+}
+.contact-container p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+.contact-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.contact-form .form-group {
+  margin-bottom: 2rem;
+}
+.contact-form label {
+  font-weight: bold;
+}
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+  width: 100%;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 1.1rem;
+}
+.contact-form
+
+/* Chat section */
+
+/* Set the default font family and reset margin and padding for the body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style for the chat container */
+.chat-container {
+    height: 70vh;
+    overflow-y: scroll;
+    padding: 10px;
+}
+
+/* Style for individual chat messages */
+.message {
+    margin-bottom: 10px;
+}
+
+/* Style for the sender name */
+.sender {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* Style for the message text */
+.text {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 70%;
+}
+
+/* Style for the input container */
+.input-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+}
+
+/* Style for the message input */
+.input-container input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+/* Style for the send button */
+.input-container button {
+    padding: 8px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Hover effect for the send button */
+.input-container button:hover {
+    background-color: #0056b3;
+}
+
+/* Sidebar */
+
+.sidebar {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #f0f0f0;
+  padding: 20px;
+  z-index: 999;
+}
+
+#search {
+  margin-bottom: 10px;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+/* Custom CSS for additional styling */
+
+/* Style for the profile container */
+.profile {
+  margin-top: 50px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+}
+
+/* Style for the profile information heading */
+.profile-info h2 {
+  margin-top: 0;
+}
+
+/* Style for the paragraphs within the profile information */
+.profile-info p {
+  margin-bottom: 20px;
+}
+
+/* Style for the media container within the profile */
+.profile-media {
+  text-align: center;
+}
+
+/* Style for individual videos */
+.video {
+  margin-bottom: 20px;
+}
+
+/* Style for the network button */
+.network-button {
+  display: block;
+  width: 100%;
+  text-align: center;
+}
+
+/* Custom CSS for additional styling */
+
+/* Ensuring the body and HTML element take up the full height of the viewport */
+body, html {
+  height: 100%;
+}
+
+/* Making sure the container fills the entire viewport height */
+.container-fluid {
+  height: 100%;
+}
+
+/* Styling the message area */
+.message-area {
+  height: calc(100% - 150px);
+  overflow-y: auto;
+}
+
+/* Styling individual messages */
+.message {
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* Styling sent messages */
+.message.sent {
+  align-self: flex-end;
+  background-color: #e2f0cb;
+}
+
+/* Styling received messages */
+.message.received {
+  align-self: flex-start;
+  background-color: #f0f0f0;
+}
+

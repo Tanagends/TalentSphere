@@ -30,13 +30,15 @@ def load_user(user_id):
             return usr
     return None
 
-
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
     """Landing page"""
+    if request.method == 'POST':
+        # Handle POST request data here
+        pass
+    return render_template('index.html')
 
-    return f"Hello talentsphere"
 
 
 @app.route('/signup', methods=["GET", "POST"])
