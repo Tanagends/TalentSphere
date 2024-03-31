@@ -9,5 +9,7 @@
 
     {{ form.logo_path.label }} <br>
     {{ form.logo_path }}
-
+    {% for error in form.logo_path.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
 {% endblock uploads %}

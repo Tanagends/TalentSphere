@@ -6,9 +6,11 @@
 
 {% block surname %}
 
-    {{ form.organization.label }} {{ form.organization }}
+    {{ form.organization.label }}
+    <br>
+    {{ form.organization }}
     {% for error in form.organization.errors %}
-        <span>error</span>
+        <span>{{ error }}</span>
     {% endfor %}
 
 {% endblock surname %}
@@ -17,5 +19,8 @@
 
     {{ form.profile_image_path.label }} <br>
     {{ form.profile_image_path }}
+    {% for error in form.profile_image_path.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
 
 {% endblock uploads %}
