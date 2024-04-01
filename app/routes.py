@@ -36,10 +36,11 @@ def load_user(user_id):
 @login_required
 def index():
     """Landing page"""
-    if request.method == 'POST':
-        # Handle POST request data here
-        pass
-    return render_template('index.html')
+    # if request.method == 'POST':
+    #     # Handle POST request data here
+    #     pass
+    # return render_template('index.html')
+    return f"Talent sphere"
 
 
 @main_app.route('/signup', methods=["GET", "POST"])
