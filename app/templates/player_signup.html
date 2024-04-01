@@ -24,16 +24,12 @@
         <span>{{ error }}</span>
     {% endfor %}
 
-    {{ form.club.label }}
-    <br>
-    {{ form.club }}
+    {{ form.club.label }} {{ form.club }}
     {% for error in form.club.errors %}
         <span>{{ error }}</span>
     {% endfor %}
 
-    {{ form.academy.label }}
-    <br>
-    {{ form.academy }}
+    {{ form.academy.label }} {{ form.academy }}
     {% for error in form.academy.errors %}
         <span>{{ error }}</span>
     {% endfor %}

@@ -33,14 +33,13 @@ def load_user(user_id):
 
 @main_app.route('/')
 @main_app.route('/index')
-@login_required
 def index():
     """Landing page"""
     # if request.method == 'POST':
     #     # Handle POST request data here
     #     pass
-    # return render_template('index.html')
-    return f"Talent sphere"
+    return render_template('index.html')
+    #return f"Talent sphere"
 
 
 @main_app.route('/signup', methods=["GET", "POST"])
@@ -110,31 +109,21 @@ def sponsor_signup():
 @main_app.route('/login', methods=["GET", "POST"])
 def login():
     """Logs in the user"""
-    
+
     # if current_user.is_authenticated:
     #     return redirect(url_for('main.index'))
 
-
     form = LoginForm()
     if form.validate_on_submit():
-        # Query the Player model for the user
-        user = Player.query.filter_by(email=form.email.data).first()
-    
-        # If user is not found in the Player model, try other user models
-        if user is None or not user.check_password(form.password.data):
-            users = [Scout, Club, Academy, Sponsor]
-            for UserModel in users:
-                user = UserModel.query.filter_by(email=form.email.data).first()
-                if user and user.check_password(form.password.data):
-                    break
-            else:
-                flash('Invalid email or password')
-                return redirect(url_for('main.login'))
-        
-        # Log in the user
-        login_user(user)
-        flash('You are now signed in')
-        return redirect(url_for('main.index'))
+        users = [Scout, Club, Academy, Sponsor, Player]
+        for UserModel in users:
+            user = UserModel.query.filter_by(email=form.email.data).first()
+            if user and user.check_password(form.password.data):
+                login_user(user)
+                flash('You are now signed in')
+                return redirect(url_for('main.index'))
+
+        form.password.errors.append('Invalid email or password')
 
     return render_template('login.html', form=form)
 

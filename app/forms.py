@@ -43,8 +43,8 @@ class ScoutPlayerForm(BaseForm):
     surname = StringField('Surname', validators=[DataRequired(message="Please enter your surname"),
                                                  Length(min=2, max=36)])
     DOB = DateField('Date of Birth', validators=[DataRequired()])
-    club = StringField('Club', validators=[Length(min=2, max=36)])
-    academy = StringField('Academy', validators=[Length(min=2, max=36)])
+    club = StringField('Club', validators=[Length(max=36)])
+    academy = StringField('Academy', validators=[Length(max=36)])
     profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 'png'], "Images only")])
     
 

@@ -61,7 +61,7 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title text-center">Login</h2>
-          <form action="/login" method="POST">
+          <form action="/login" method="post">
             <div class="form-group">
               <!--label for="email">Email</label-->
               <!-- Flask/Jinja code for email field -->
@@ -77,7 +77,7 @@
               {{ form.password.label }}
               {{ form.password(class="form-control", id="password") }}
               {% for error in form.password.errors %}
-              <span style="color: red;">[{{ error }}]<br></span>
+              <span style="color: red">[{{ error }}]<br></span>
               {% endfor %}
             </div>
             <!-- Submit button -->
