@@ -61,7 +61,8 @@
       <div class="card">
         <div class="card-body">
           <h2 class="card-title text-center">Login</h2>
-          <form action="/login" method="post">
+          <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
             <div class="form-group">
               <!--label for="email">Email</label-->
               <!-- Flask/Jinja code for email field -->
