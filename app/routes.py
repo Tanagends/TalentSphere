@@ -32,14 +32,10 @@ def load_user(user_id):
     return None
 
 @main_app.route('/')
-@main_app.route('/index')
+@main_app.route('/index/')
 def index():
     """Landing page"""
-    # if request.method == 'POST':
-    #     # Handle POST request data here
-    #     pass
     return render_template('index.html')
-    #return f"Talent sphere"
 
 
 @main_app.route('/signup', methods=["GET", "POST"])
@@ -121,7 +117,7 @@ def login():
             if user and user.check_password(form.password.data):
                 login_user(user)
                 flash('You are now signed in')
-                return redirect(url_for('main.index'))
+                return redirect(url_for('main2.home'))
 
         form.password.errors.append('Invalid email or password')
 

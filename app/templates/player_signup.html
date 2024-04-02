@@ -17,6 +17,12 @@
         <span>{{ error }}</span>
     {% endfor %}
 
+    {{ form.gender }}
+    <br>
+    {% for error in form.gender.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+    
     {{ form.position.label }}
     <br>
     {{ form.position }}

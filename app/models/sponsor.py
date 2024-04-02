@@ -9,4 +9,5 @@ class Sponsor(BaseModel):
     __tablename__ = 'sponsors'
 
     organization = db.Column(db.String(120), nullable=True)
+    gender = db.Column(db.String(120))
     profile_image_path = db.Column(db.String(255))

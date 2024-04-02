@@ -11,6 +11,7 @@ class Player(BaseModel):
 
     surname = db.Column(db.String(120), nullable=False)
     DOB = db.Column(db.Date, nullable=False)
+    gender = db.Column(db.String(120))
     position = db.Column(db.String(120))
     club = db.Column(db.String(120), nullable=True)
     academy = db.Column(db.String(120), nullable=True)
