@@ -19,6 +19,8 @@ from app.process import base_fields, user_signup_helper
 from app import db
 from app import login_manager
 from app.routes import main_app
+from sqlalchemy import and_, or_
+from datetime import datetime
 
 @main_app.route('/profile/<str:id>', strict_slashes=False)
 def profile(id):
@@ -50,10 +52,32 @@ def profiles():
             search_dict['gender'] = request.form.get('gender')
         if request.form.get('position'):
             search_dict['position'] = request.form.get('position')
-        if request.form.get('age'):
 
-            search_dict['age'] = request.form.get('age')
+        search_lis = [k == v for k, v in search_dict.items()]
 
-        search_str = request.form.get('search')
+        age = request.form.get('age')
+
+        if age == "U15":
+            min_age, max_age = 3, 15
+        elif age == "U18":
+            min_age, max_age = 15, 18
+        elif age == "U21":
+            min_age, max_age = 18, 23
+        elif age == "Over 23":
+            min_age, max_age = 23, 50
+        else:
+            min_age, max_age = 3, 50
+
+        today = datetime.today()
+        age_expr = (today.year - Player.dob.year) - 
+                    ((today.month, today.day) < (Player.dob.month, Player.dob.day))
         
-        players = Player.query.filter_by(**search_dict)
+        if not (min_age == 3 and max_age == 50):
+            search_list = search_lis + [age_expr >= min_age, age_expr < max_age]
+
+        search_str = '%' + request.form.get('search') + '%'
+        search_fields = [Player.name.ilike(search_str), Player.surname.ilike(search_str)]
+        
+        players = Player.query.filter(and_(*search_list, or_(search_fields))).limit(10).all()
+
+        return render_template('profiles.html', players = players)
