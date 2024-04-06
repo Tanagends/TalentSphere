@@ -1,441 +1,319 @@
-/* Common styling for navigation bars */
-.navbar {
-  background-color: #333;
-  overflow: hidden;
+/* Hero Section Styling */
+.hero-section {
   position: relative;
-  z-index: 1000;
-}
-
-/* Styling for links within navigation bars */
-.navbar a {
-  float: left;
-  display: block;
-  color: #f2f2f2;
-  text-align: center;
-  padding: 14px 20px;
-  text-decoration: none;
-}
-
-/* Hover effect for links within navigation bars */
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-/* Styling for dropdown menu */
-.dropdown-menu {
-  z-index: 1001;
-}
-
-/* Styling for search container */
-.search-container {
-  float: right;
-}
-
-/* Styling for search input */
-.search-container input[type=text] {
-  padding: 6px;
-  margin-top: 8px;
-  margin-right: 16px;
-  border: none;
-}
-
-/* Styling for search button */
-.search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #ddd;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Styling for carousel embedded images */
-#imageCarousel .embed-responsive {
-  max-height: 300px;
-  max-width: 2000px;
-  margin: 0 auto;
-}
-
-/* Styling for the image carousel items */
-#imageCarousel .carousel-item {
-  height: 400px;
-}
-
-/* Styling for carousel controls */
-#imageCarousel .carousel-control-prev,
-#imageCarousel .carousel-control-next {
-  width: 5%;
-}
-
-/* Styling for carousel control icons */
-#imageCarousel .carousel-control-prev-icon,
-#imageCarousel .carousel-control-next-icon {
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-/* Styling for carousel control hover effect */
-#imageCarousel .carousel-control-prev:hover,
-#imageCarousel .carousel-control-next:hover {
-  background-color: rgba(0, 0, 0, 0.9);
-}
-
-/* Add margin-bottom to the carousel */
-#imageCarousel {
-  margin-bottom: 20px;
-}
-
-/* Styling for the heading container */
-.heading-container,
-.contact-container {
-  max-width: 800px;
-  margin: 20px auto;
-  padding: 30px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.heading-container h2,
-.contact-container h2 {
-  margin-top: 0;
-  color: #333;
-  font-size: 24px;
-}
-
-.heading-container p,
-.contact-container p {
-  margin-bottom: 20px;
-  color: #555;
-}
-
-/* Styling for form groups within contact container */
-.contact-container .form-group {
-  margin-bottom: 20px;
-}
-
-/* Styling for labels within contact container */
-.contact-container label {
-  display: block;
-  margin-bottom: 5px;
-  color: #555;
-  font-weight: bold;
-}
-
-/* Styling for inputs and textarea within contact container */
-.contact-container input[type="text"],
-.contact-container input[type="email"],
-.contact-container textarea {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-.contact-container textarea {
-  height: 120px;
-}
-
-/* Styling for submit button within contact container */
-.contact-container button[type="submit"] {
-  background-color: #007bff;
+  height: 100vh;
+  background-color: #333;
   color: #fff;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 16px;
+  overflow: hidden;
 }
 
-.contact-container button[type="submit"]:hover {
-  background-color: #0056b3;
-}
-
-/* Styling for FAQs container */
-.faq-container {
-  margin-top: 50px;
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
+  color: white;
 }
 
-/* Add spacing between contact form and FAQ section */
-.contact-container {
+.hero-content h1 {
+  font-size: 3rem;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+}
+
+/* Navbar Styling */
+.navbar {
+  background-color: #010000;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107;
+}
+
+/* Feature Cards Styling */
+.feature-card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Custom Styles */
+#features {
+  background-color: #FFFFFF;
+}
+
+#about {
+  background-color: #BFCBCE;
+}
+
+#contact {
+  background-color: #f8f9fa;
+}
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+  .hero-section {
+    height: 80vh;
+  }
+}
+
+/* Custom CSS for hero section */
+.hero {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  z-index: 1;
+}
+
+.carousel-item {
+  height: 100vh;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Slides */
+.mySlides {
+  display: block;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: gray;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color */
+.prev:hover, .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Custom CSS for Testimonials Section */
+#testimonials {
+  background-color: #E1E1E1;
+  padding-top: 50px;
+  padding-bottom: 50px;
   margin-bottom: 50px;
 }
 
-/* Styling for FAQ questions */
-.faq-question {
+.testimonial-card {
+  background-color: #FFFFFF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
-  color: #333;
-  font-size: 1.2rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s ease;
 }
 
-/* Hover effect for FAQ questions */
-.faq-question:hover {
-  color: #007bff;
-}
-
-/* Styling for FAQ answers */
-.faq-answer {
-  display: none;
-  color: #555;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* Styling for FAQ answer visible state */
-.faq-item.active .faq-answer {
+.testimonial-img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
   display: block;
 }
 
-/* Footer styles */
-.footer {
-  background-color: #333;
-  color: #fff;
-  padding: 50px 0;
-  width: 100%;
+.testimonial-text {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
-.footer h3,
-.footer p,
-.footer a {
-  color: #fff;
-}
-
-.footer a:hover {
-  color: #bbb;
-}
-
-.footer ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.footer::after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.footer {
-  margin-top: 20px;
-}
-
-/* Custom CSS for additional styling */
-/* Navbar */
-.navbar {
-  padding: 1rem 0;
-}
-.navbar-brand {
-  font-size: 1.5rem;
+.testimonial-author {
   font-weight: bold;
 }
-.nav-link {
-  font-size: 1.1rem;
+
+/* Testimonial carousel width and height adjustment */
+.carousel {
+  width: 100%;
+  height: 400px;
 }
-/* Contact Container */
-.contact-container {
-  padding: 4rem 0;
+
+/* Adjustments for the footer */
+footer {
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+/* Custom CSS for Call-to-Action Section */
+#cta {
+  background-color: #D6D6D6;
+  color: #010000;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#cta h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+#cta p {
+  font-size: 20px;
+  margin-bottom: 30px;
+}
+
+#cta .btn-primary {
+  background-color: #010000;
+  border-color: #010000;
+}
+
+#cta .btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Footer */
+footer {
+  background-color: #D6D6D6;
+  color: #fff;
+  padding: 20px 0;
   text-align: center;
 }
-.contact-container h2 {
-  font-size: 2.5rem;
-  margin-bottom: 2rem;
-}
-.contact-container p {
-  font-size: 1.2rem;
-  color: #666;
-  margin-bottom: 2rem;
-}
-.contact-form {
-  max-width: 500px;
-  margin: 0 auto;
-}
-.contact-form .form-group {
-  margin-bottom: 2rem;
-}
-.contact-form label {
-  font-weight: bold;
-}
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form textarea {
-  width: 100%;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 1.1rem;
-}
-.contact-form
 
-/* Chat section */
-
-/* Set the default font family and reset margin and padding for the body */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* Style for the chat container */
-.chat-container {
-    height: 70vh;
-    overflow-y: scroll;
-    padding: 10px;
-}
-
-/* Style for individual chat messages */
-.message {
-    margin-bottom: 10px;
-}
-
-/* Style for the sender name */
-.sender {
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-/* Style for the message text */
-.text {
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 10px;
-    display: inline-block;
-    max-width: 70%;
-}
-
-/* Style for the input container */
-.input-container {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #f0f0f0;
-    padding: 10px;
-    display: flex;
-}
-
-/* Style for the message input */
-.input-container input[type="text"] {
-    flex: 1;
-    padding: 8px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    margin-right: 10px;
-}
-
-/* Style for the send button */
-.input-container button {
-    padding: 8px 15px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Hover effect for the send button */
-.input-container button:hover {
-    background-color: #0056b3;
-}
-
-/* Sidebar */
-
-.sidebar {
+/* Style for gallery items */
+.gallery-item {
   position: relative;
+  overflow: hidden;
+}
+
+.gallery-item img {
+  transition: transform 0.3s ease;
+}
+
+.gallery-item .overlay {
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
-  background-color: #f0f0f0;
-  padding: 20px;
-  z-index: 999;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-#search {
-  margin-bottom: 10px;
+.gallery-item:hover .overlay {
+  opacity: 1;
 }
 
-.btn-primary {
-  width: 100%;
+.gallery-item:hover img {
+  transform: scale(1.1);
 }
 
-/* Custom CSS for additional styling */
+#scrollToTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 99;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 50%;
+}
 
-/* Style for the profile container */
-.profile {
-  margin-top: 50px;
-  padding: 20px;
-  background-color: #f9f9f9;
+#scrollToTopBtn:hover {
+  background-color: #0056b3;
+}
+
+/* Custom CSS for improved visual appeal */
+/* Navbar */
+.navbar {
+  background-color: #343a40;
+}
+
+.navbar-brand,
+.navbar-nav .nav-link {
+  color: #ffffff;
+  font-size: 18px;
+  margin-right: 20px;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffcc00;
+}
+
+/* Profile Cards */
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
 }
 
-/* Style for the profile information heading */
-.profile-info h2 {
-  margin-top: 0;
+.card-img-top {
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
-/* Style for the paragraphs within the profile information */
-.profile-info p {
-  margin-bottom: 20px;
+.card-title {
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
-/* Style for the media container within the profile */
-.profile-media {
-  text-align: center;
+/* See More Button */
+#seeMoreBtn {
+  font-size: 18px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: #007bff;
+  border: none;
 }
 
-/* Style for individual videos */
-.video {
-  margin-bottom: 20px;
+#seeMoreBtn:hover {
+  background-color: #0056b3;
+  color: #ffffff;
 }
 
-/* Style for the network button */
-.network-button {
-  display: block;
-  width: 100%;
-  text-align: center;
-}
-
-/* Custom CSS for additional styling */
-
-/* Ensuring the body and HTML element take up the full height of the viewport */
-body, html {
-  height: 100%;
-}
-
-/* Making sure the container fills the entire viewport height */
-.container-fluid {
-  height: 100%;
-}
-
-/* Styling the message area */
-.message-area {
-  height: calc(100% - 150px);
-  overflow-y: auto;
-}
-
-/* Styling individual messages */
-.message {
-  padding: 10px;
-  border-radius: 5px;
-}
-
-/* Styling sent messages */
-.message.sent {
-  align-self: flex-end;
-  background-color: #e2f0cb;
-}
-
-/* Styling received messages */
-.message.received {
-  align-self: flex-start;
-  background-color: #f0f0f0;
+/* Footer */
+footer {
+  background-color: #343a40;
+  color: #ffffff;
+  padding: 20px 0;
 }
 
