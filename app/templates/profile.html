@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - Player Channel</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts - Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Talent Sphere</a>
+    <!-- Logged in user dropdown -->
+    <div class="ml-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: Tinashe Navonika
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="player_account.html">My Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Profile</h2>
+  
+  <!-- Personal Details -->
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Profile Picture -->
+      <div class="text-center">
+        <img src="profile_picture.jpg" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
+      </div>
+      <!-- Bio -->
+      <div class="mt-4">
+        <h5>Bio:</h5>
+        <p>Current bio goes here</p>
+      </div>
+      <!-- Date of Birth -->
+      <div class="mt-4">
+        <h5>Date of Birth:</h5>
+        <p>1900-01-01</p>
+      </div>
+      <!-- City -->
+      <div class="mt-4">
+        <h5>City:</h5>
+        <p>New York</p>
+      </div>
+      <!-- Club -->
+      <div class="mt-4">
+        <h5>Club:</h5>
+        <p>FC Barcelona</p>
+      </div>
+      <!-- Academy -->
+      <div class="mt-4">
+        <h5>Academy:</h5>
+        <p>Talent Academy</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Videos -->
+  <div class="mt-5">
+    <h4 class="text-center mb-4">Videos</h4>
+    <div class="row">
+      <!-- Video 1 -->
+      <div class="col-md-4 mb-3">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="video1.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <!-- Video 2 -->
+      <div class="col-md-4 mb-3">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="video2.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <!-- Video 3 -->
+      <div class="col-md-4 mb-3">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="video3.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap JS, jQuery, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+</body>
+</html>
+
