@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile - User View</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#features">Our Offers</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact Us</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">Profile</h2>
+  
+  <!-- Personal Details -->
+  <div class="row">
+    <div class="col-md-6">
+      <!-- Profile Picture -->
+      <div class="text-center">
+        <img src="profile_picture.jpg" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
+      </div>
+      <!-- Bio -->
+      <div class="mt-4">
+        <h5>Bio:</h5>
+        <p>Current bio goes here</p>
+      </div>
+      <!-- Date of Birth -->
+      <div class="mt-4">
+        <h5>Date of Birth:</h5>
+        <p>1900-01-01</p>
+      </div>
+      <!-- City -->
+      <div class="mt-4">
+        <h5>City:</h5>
+        <p>New York</p>
+      </div>
+      <!-- Club -->
+      <div class="mt-4">
+        <h5>Club:</h5>
+        <p>FC Barcelona</p>
+      </div>
+      <!-- Academy -->
+      <div class="mt-4">
+        <h5>Academy:</h5>
+        <p>Talent Academy</p>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Videos -->
+  <div class="mt-5">
+    <h4 class="text-center mb-4">Videos</h4>
+    <div class="row">
+      <!-- Video 1 -->
+      <div class="col-md-4 mb-3">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="video1.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <!-- Video 2 -->
+      <div class="col-md-4 mb-3">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="video2.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+      <!-- Video 3 -->
+      <div class="col-md-4 mb-3">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="video3.mp4" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Form -->
+  <div class="mt-5">
+    <h4 class="text-center mb-4">Contact Player</h4>
+    <form>
+      <div class="form-group">
+        <label for="name">Your Name:</label>
+        <input type="text" class="form-control" id="name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Your Email:</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea class="form-control" id="message" rows="4" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Send Message</button>
+    </form>
+  </div>
+
+  <!-- Go Back Button -->
+  <div class="mt-5 text-center">
+    <a href="#" class="btn btn-secondary">Go Back</a>
+  </div>
+</div>
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<!-- Bootstrap JS, jQuery, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+</body>
+</html>
+
