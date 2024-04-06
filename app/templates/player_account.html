@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account - Player Dashboard</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Google Fonts - Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand" href="#">Talent Sphere</a>
+    <!-- Assuming you have a logged-in user -->
+    <div class="ml-auto"> 
+      <a class="nav-link" href="#">Logged in as: Tinashe Navonika</a> <!-- Display username -->
+    </div>
+  </div>
+</nav>
+
+<!-- Page Content -->
+<div class="container mt-5">
+  <h2 class="mb-4 text-center">My Account</h2>
+  
+  <!-- Profile Picture -->
+  <div class="form-group text-center">
+    <label for="profilePicture">Profile Picture:</label>
+    <input type="file" class="form-control-file" id="profilePicture" accept="image/*">
+    <!-- Display current profile picture -->
+    <img src="current_profile_picture.jpg" alt="Current Profile Picture" class="mt-3 img-thumbnail rounded-circle" style="width: 150px;">
+  </div>
+  
+  <!-- Bio -->
+  <div class="form-group">
+    <label for="bio">Bio:</label>
+    <textarea class="form-control" id="bio" rows="4">Current bio goes here</textarea>
+  </div>
+
+  <!-- Videos -->
+  <div class="form-group">
+    <label for="videos">Upload Videos (at least 3):</label>
+    <input type="file" class="form-control-file" id="videos" accept="video/*" multiple>
+  </div>
+
+  <!-- Date of Birth -->
+  <div class="form-group">
+    <label for="dob">Date of Birth:</label>
+    <input type="date" class="form-control" id="dob">
+  </div>
+
+  <!-- City -->
+  <div class="form-group">
+    <label for="city">City:</label>
+    <input type="text" class="form-control" id="city">
+  </div>
+
+  <!-- Club -->
+  <div class="form-group">
+    <label for="club">Club:</label>
+    <input type="text" class="form-control" id="club">
+  </div>
+
+  <!-- Academy -->
+  <div class="form-group">
+    <label for="academy">Academy:</label>
+    <input type="text" class="form-control" id="academy">
+  </div>
+
+  <!-- Postal Code -->
+  <div class="form-group">
+    <label for="postalCode">Postal Code:</label>
+    <input type="text" class="form-control" id="postalCode">
+  </div>
+
+  <!-- Country -->
+  <div class="form-group">
+    <label for="country">Country:</label>
+    <input type="text" class="form-control" id="country">
+  </div>
+
+  <!-- Position -->
+  <div class="form-group">
+    <label for="position">Position:</label>
+    <input type="text" class="form-control" id="position">
+  </div>
+
+  <!-- Email -->
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" class="form-control" id="email">
+  </div>
+
+  <!-- Password -->
+  <div class="form-group">
+    <label for="password">New Password:</label>
+    <input type="password" class="form-control" id="password">
+  </div>
+
+  <!-- Confirm Password -->
+  <div class="form-group">
+    <label for="confirmPassword">Confirm New Password:</label>
+    <input type="password" class="form-control" id="confirmPassword">
+  </div>
+
+  <!-- Save Button -->
+  <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+</div>
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- Bootstrap JS, jQuery, Popper.js -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<!-- Custom JS -->
+<script src="script.js"></script>
+</body>
+</html>
+
