@@ -35,7 +35,7 @@ def load_user(user_id):
 @main_app.route('/index/')
 def index():
     """Landing page"""
-    return render_template('index.html')
+    return render_template('landing.html')
 
 
 @main_app.route('/signup', methods=["GET", "POST"])
