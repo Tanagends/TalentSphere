@@ -16,13 +16,15 @@ def create_app():
     
     # Import and register blueprints
     from app.routes import main_app
-    app.register_blueprint(main_app)
+    from app.route2 import main_app as main_app2
+    app.register_blueprint(main_app, name="main")
+    app.register_blueprint(main_app2, name="main2")
     
     # Initialize extensions
     db.init_app(app)
     migrate = Migrate(app, db)
     login_manager.init_app(app)
-    login_manager.login_view = 'main.login'
+    # login_manager.login_view = 'main.login'
 
 
     @login_manager.user_loader

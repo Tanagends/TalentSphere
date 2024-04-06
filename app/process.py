@@ -38,6 +38,7 @@ def base_fields(form):
         distinct_fields = {
                 'surname': form.surname.data,
                 'DOB': form.DOB.data,
+                'gender': form.gender.data,
                 'profile_image_path': upload_profile_image(form.profile_image_path.data)
         }
 

@@ -17,6 +17,13 @@
         <span>{{ error }}</span>
     {% endfor %}
 
+    {{ form.gender.label }}
+    <br>
+    {{ form.gender }}
+    {% for error in form.gender.errors %}
+        <span>{{ error }}</span>
+    {% endfor %}
+    
     {{ form.position.label }}
     <br>
     {{ form.position }}
@@ -24,16 +31,12 @@
         <span>{{ error }}</span>
     {% endfor %}
 
-    {{ form.club.label }}
-    <br>
-    {{ form.club }}
+    {{ form.club.label }} {{ form.club }}
     {% for error in form.club.errors %}
         <span>{{ error }}</span>
     {% endfor %}
 
-    {{ form.academy.label }}
-    <br>
-    {{ form.academy }}
+    {{ form.academy.label }} {{ form.academy }}
     {% for error in form.academy.errors %}
         <span>{{ error }}</span>
     {% endfor %}

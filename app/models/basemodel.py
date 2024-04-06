@@ -19,7 +19,7 @@ class BaseModel(db.Model):
     city = db.Column(db.String(120))
     country = db.Column(db.String(120))
     postal_code = db.Column(db.Integer)
-    password = db.Column(db.String(2048))
+    password = db.Column(db.String(2048), nullable=False)
     
     is_active = db.Column(db.Boolean, default=True)
 
