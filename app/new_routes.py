@@ -80,4 +80,4 @@ def profiles():
         
         players = Player.query.filter(and_(*search_list, or_(search_fields))).limit(10).all()
 
-        return render_template('profiles.html', players = players)
+        return render_template('profiles.html', players=players)
