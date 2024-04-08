@@ -22,18 +22,25 @@ from app.routes import main_app
 from sqlalchemy import and_, or_
 from datetime import datetime
 
-@main_app.route('/profile/<str:id>', strict_slashes=False)
+main3 = Blueprint('main3', __name__)
+
+@main3.route('/profile')
+def profile():
+    return render_template('profile.html')
+"""
+@main3.route('/profile/<string:id>', strict_slashes=False)
 def profile(id):
-    """Displays the profile of the player"""
+
+    Displays the profile of the player
 
     player = Player.query.get(id)
-    pl_dict = {k: v for k, v in player.__dict__.items() if k in Player.__columns__}
+    pl_dict = {k: v for k, v in player.__dict__.items() if k in Player.__table__.columns.keys()}
     pl_dict.pop('email', None)
     pl_dict.pop('password', None)
 
     return render_template('profile.html', player=pl_dict)
-
-@main_app.route('profiles', methods=["GET", "POST"], strict_slashes=False)
+"""
+@main3.route('/profiles', methods=["GET", "POST"], strict_slashes=False)
 def profiles():
     """Shows the profiles of the players"""
     excluded_fields = ["password", "email"]
@@ -43,7 +50,7 @@ def profiles():
         dict_list = []
         for player in players:
             dict_list.append({k: v for k, v in player.__dict__.items()
-                             if k in Player.__columns__ and not k in excluded_fields})
+                             if k in Player.__table__.columns.keys() and not k in excluded_fields})
         return render_template('profiles.html', profiles=dict_list)
 
     else:
@@ -69,7 +76,7 @@ def profiles():
             min_age, max_age = 3, 50
 
         today = datetime.today()
-        age_expr = (today.year - Player.dob.year) - 
+        age_expr = (today.year - Player.dob.year) -\
                     ((today.month, today.day) < (Player.dob.month, Player.dob.day))
         
         if not (min_age == 3 and max_age == 50):
@@ -80,4 +87,4 @@ def profiles():
         
         players = Player.query.filter(and_(*search_list, or_(search_fields))).limit(10).all()
 
-        return render_template('profiles.html', players=players)
+        return render_template('profiles.html')

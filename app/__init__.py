@@ -17,9 +17,10 @@ def create_app():
     # Import and register blueprints
     from app.routes import main_app
     from app.route2 import main_app as main_app2
+    from app.new_routes import main3
     app.register_blueprint(main_app, name="main")
     app.register_blueprint(main_app2, name="main2")
-    
+    app.register_blueprint(main3, name="main3")
     # Initialize extensions
     db.init_app(app)
     migrate = Migrate(app, db)
