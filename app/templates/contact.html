@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact Us</title>
+  <title>Talent Sphere - Contact Us</title>
   <!-- Link to a modern CSS framework like Bootstrap for styling -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Font Awesome for icons -->
@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<!-- navbar-->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">Talent Sphere</a>
@@ -21,82 +21,241 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTalents" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Talents
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownTalents">
-            <a class="dropdown-item" href="#">Strikers</a>
-            <a class="dropdown-item" href="#">Midfielders 2</a>
-            <a class="dropdown-item" href="#">Defenders</a>
-            <a class="dropdown-item" href="#">Goalkeepers</a>
-          </div>
+      <ul class="navbar-nav mr-auto">
+           <li class="nav-item">
+          <a class="nav-link" href="/home">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profiles.html">Profiles</a>
+          <a class="nav-link" href="/about">About us</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="network.html">Network</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="about.html">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
+                <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
         </li>
       </ul>
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sign In
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
-          <a class="dropdown-item" href="{{ url_for('main.sign_up') }}">Signup</a>
+      
+      <!-- Login/Signup Dropdown -->
+      <div class="nav-item dropdown ml-auto">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user"></i>
+          Login/Signup
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+		<a class="dropdown-item" href="/login">Login</a>
+          <a class="dropdown-item" href="/signup">Signup</a>
         </div>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- Contact Container -->
-<div class="contact-container">
-  <div class="container">
-    <h2>Hi, what can we help you with?</h2>
-    <p>Feel free to reach out to us with any questions, feedback, or inquiries.</p>
-    <!-- Contact Form -->
-    <form class="contact-form" action="contact.php" method="post">
-      <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
+<!-- FAQS -->
+<div class="container mt-5">
+  <h2 class="text-center">Frequently Asked Questions</h2>
+  <div class="accordion" id="faqAccordion">
+    <!-- FAQ Item 1 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading1">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse1" aria-expanded="true" aria-controls="faqCollapse1">
+            Q: How can your platform help me as a talented soccer player?
+          </button>
+        </h5>
       </div>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+      <div id="faqCollapse1" class="collapse show" aria-labelledby="faqHeading1" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: Our platform connects talented soccer players with opportunities for sponsorship, club signings, and placements in reputable soccer academies. We provide a platform for showcasing your skills and connecting with scouts, agents, and sponsors.
+        </div>
       </div>
-      <div class="form-group">
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
+    </div>
+    <!-- FAQ Item 2 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading2">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse2" aria-expanded="false" aria-controls="faqCollapse2">
+            Q: How do I sign up for your platform?
+          </button>
+        </h5>
       </div>
-      <button type="submit">Send Message</button>
-    </form>
+      <div id="faqCollapse2" class="collapse" aria-labelledby="faqHeading2" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: You can sign up by visiting our website and clicking on the "Sign Up" button. Fill out the required information and follow the instructions to complete the registration process.
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Item 3 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading3">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse3" aria-expanded="false" aria-controls="faqCollapse3">
+            Q: Is your platform free to use?
+          </button>
+        </h5>
+      </div>
+      <div id="faqCollapse3" class="collapse" aria-labelledby="faqHeading3" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: Yes, our platform is free for talented soccer players to use. There are no subscription fees or charges for accessing the basic features and services.
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Item 4 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading4">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse4" aria-expanded="false" aria-controls="faqCollapse4">
+            Q: Can I upload videos of my soccer matches?
+          </button>
+        </h5>
+      </div>
+      <div id="faqCollapse4" class="collapse" aria-labelledby="faqHeading4" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: Yes, you can upload videos of your soccer matches to showcase your skills to potential scouts, agents, and sponsors. Simply navigate to the "Videos" section on our platform and follow the instructions to upload your videos.
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Item 5 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading5">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse5" aria-expanded="false" aria-controls="faqCollapse5">
+            Q: How long does it take to get noticed by scouts?
+          </button>
+        </h5>
+      </div>
+      <div id="faqCollapse5" class="collapse" aria-labelledby="faqHeading5" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: The time it takes to get noticed by scouts can vary depending on several factors, including your skills, performance, and visibility on our platform. Consistently updating your profile with relevant information and showcasing your abilities through videos can increase your chances of getting noticed.
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Item 6 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading6">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse6" aria-expanded="false" aria-controls="faqCollapse6">
+            Q: Can I connect with other soccer players on your platform?
+          </button>
+        </h5>
+      </div>
+      <div id="faqCollapse6" class="collapse" aria-labelledby="faqHeading6" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: Yes, you can connect with other soccer players on our platform. Our social features allow you to interact with fellow players, share experiences, and build connections within the soccer community.
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Item 7 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading7">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse7" aria-expanded="false" aria-controls="faqCollapse7">
+            Q: How can I improve my chances of getting scouted?
+          </button>
+        </h5>
+      </div>
+      <div id="faqCollapse7" class="collapse" aria-labelledby="faqHeading7" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: To improve your chances of getting scouted, focus on honing your skills, maintaining peak physical fitness, and consistently showcasing your abilities through training sessions and match performances. Additionally, actively engage with scouts, agents, and coaches on our platform to increase your visibility.
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Item 8 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading8">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse8" aria-expanded="false" aria-controls="faqCollapse8">
+            Q: Are there age restrictions for using your platform?
+          </button>
+        </h5>
+      </div>
+      <div id="faqCollapse8" class="collapse" aria-labelledby="faqHeading8" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: Our platform is open to soccer players of all ages. Whether you're a young talent aspiring to make it big in professional soccer or a seasoned player looking for new opportunities, you can benefit from our platform's services and features.
+        </div>
+      </div>
+    </div>
+    <!-- FAQ Item 9 -->
+    <div class="card">
+      <div class="card-header" id="faqHeading9">
+        <h5 class="mb-0">
+          <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faqCollapse9" aria-expanded="false" aria-controls="faqCollapse9">
+            Q: How secure is my personal information on your platform?
+          </button>
+        </h5>
+      </div>
+      <div id="faqCollapse9" class="collapse" aria-labelledby="faqHeading9" data-parent="#faqAccordion">
+        <div class="card-body">
+          A: We take the security and privacy of your personal information seriously. Our platform employs robust security measures to safeguard your data and ensure that it remains confidential. We adhere to strict privacy policies and guidelines to protect your information from unauthorized access or misuse.
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- FAQs Container -->
-<div class="faq-container">
+ <!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
   <div class="container">
-    <h2>Frequently Asked Questions</h2>
-    <div class="faq-item">
-      <p class="faq-question" onclick="toggleFAQ(this)">Q: How can your platform help me as a talented soccer player?</p>
-      <p class="faq-answer">A: Our platform connects talented soccer players with opportunities for sponsorship, club signings, and placements in reputable soccer academies. We provide a platform for showcasing your skills and connecting with scouts, agents, and sponsors.</p>
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
     </div>
-    <!-- to add more FAQ items as needed -->
+  </div>
+</section>
+
+
+<!-- Contact Container -->
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h2 class="card-title text-center mb-4">Hi, how can we assist you?</h2>
+          <p class="card-text text-center mb-4">Don't hesitate to reach out to us for any questions, feedback, or inquiries.</p>
+          <!-- Contact Form -->
+          <form class="needs-validation" action="contact.php" method="post" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="name">Your Name:</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+                <div class="invalid-feedback">
+                  Please provide your name.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="email">Your Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+                <div class="invalid-feedback">
+                  Please provide a valid email.
+                </div>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="message">Your Message:</label>
+              <textarea class="form-control" id="message" name="message" rows="6" required></textarea>
+              <div class="invalid-feedback">
+                Please enter your message.
+              </div>
+            </div>
+            <div class="text-center">
+              <button class="btn btn-primary btn-lg" type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
+
+ <!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
 
 
 <!-- Footer section -->

@@ -21,36 +21,30 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link" href="/index">Home</a>
+        </li>
+               
+               <li class="nav-item">
+           <a class="nav-link" href="/about">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Talents</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Profiles</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Network</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" href="#">About Us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contact Us</a>
+          <a class="nav-link" href="/contact">Contact Us</a>
         </li>
       </ul>
+      
+      
       <div class="dropdown">
         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Sign In
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-<<<<<<< HEAD
+
           <a class="dropdown-item" href="login.htmlS">Login</a>
           <a class="dropdown-item" href="#">Signup</a>
-=======
+
           <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
           <a class="dropdown-item" href="{{ url_for('main.sign_up') }}">Signup</a>
->>>>>>> 9110f45c7c8ea249e11ca6abd5606c664f04b60e
+
         </div>
       </div>
     </div>
@@ -58,63 +52,51 @@
 </nav>
 
 <!-- Main Content -->
+
 <div class="container mt-5">
   <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h1 class="text-center mb-4">Welcome to Sign Up For Talent Sphere</h1>
-      <p class="text-center">We ignite dreams for footballers, inspire investors and sponsors with scintillating talent, and mesmerize scouts, clubs, and academies.</p>
-      <p class="text-center">Who are you joining us as?</p>
-      <form action="/signup" method="POST" class="text-center">
-        <div class="form-group">
-          <input list="roles" name="role" class="form-control">
-          <datalist id="roles">
-            <option value="Football Player">
-            <option value="Scout">
-            <option value="Football Club">
-            <option value="Football Academy">
-            <option value="Sponsor">
-          </datalist>
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-body">
+          <h1 class="card-title text-center mb-4">Welcome to Talent Sphere</h1>
+          <p class="card-text text-center">We ignite dreams for footballers, inspire investors and sponsors with scintillating talent, and mesmerize scouts, clubs, and academies.</p>
+          <p class="card-text text-center">Who are you joining us as?</p>
+          <form action="/signup" method="POST" class="text-center">
+            <div class="form-group">
+              <select name="role" class="form-control">
+                <option value="Football Player">Football Player</option>
+                <option value="Scout">Scout</option>
+                <option value="Football Club">Football Club</option>
+                <option value="Football Academy">Football Academy</option>
+                <option value="Sponsor">Sponsor</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Sign Up</button>
+          </form>
         </div>
-        <button type="submit" class="btn btn-primary">Sign Up</button>
-      </form>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- Footer section -->
-<footer class="bg-dark text-white py-5">
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 mb-4 mb-md-0">
-        <h5 class="text-uppercase">About Talent Sphere</h5>
-        <p class="text-muted">Talent Sphere is a platform dedicated to connecting talented individuals with opportunities in the world of sports, particularly soccer. We provide a curated space for players, clubs, mentors, and sponsors to come together and foster growth.</p>
-      </div>
-      <div class="col-md-4 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Quick Links</h5>
-        <ul class="list-unstyled">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Talents</a></li>
-          <li><a href="#">Clubs</a></li>
-          <li><a href="#">Mentors</a></li>
-          <li><a href="#">Sponsors</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h5 class="text-uppercase mb-3">Follow Us</h5>
-        <ul class="list-inline social-icons">
-          <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-      </div>
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
     </div>
-    <div class="row mt-4">
-      <div class="col-md-12 text-center">
-        <p class="mb-0">&copy; 2024 Talent Sphere. All rights reserved.</p>
-      </div>
-    </div>
+  </div>
+</section>
+
+
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
   </div>
 </footer>
 
