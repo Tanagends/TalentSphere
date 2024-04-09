@@ -16,7 +16,7 @@ class EditBaseForm(FlaskForm):
     postal_code = IntegerField('Postal Code')
     profile_pic = FileField('Profile Picture', validators=[
                             FileAllowed(['jpg', 'png'], "Images only")])
-    submit = SubmitField('Submit')
+    submit = SubmitField('Save Changes')
 
 
 class PlayerEditForm(EditBaseForm):

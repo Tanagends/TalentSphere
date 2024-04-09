@@ -106,8 +106,8 @@ def sponsor_signup():
 def login():
     """Logs in the user"""
 
-    # if current_user.is_authenticated:
-    #     return redirect(url_for('main.index'))
+    if current_user.is_authenticated:
+        return redirect(url_for('main.index'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -116,6 +116,7 @@ def login():
             user = UserModel.query.filter_by(email=form.email.data).first()
             if user and user.check_password(form.password.data):
                 login_user(user)
+                user.role = UserModel.__tablename__
                 flash('You are now signed in')
                 return redirect(url_for('main2.home'))
 

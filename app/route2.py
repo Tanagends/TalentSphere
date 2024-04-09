@@ -3,9 +3,9 @@ from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import current_user, login_required
 from flask import request
 from sqlalchemy.exc import SQLAlchemyError
-from app.edit_form import EditBaseForm
+from app.edit_form import EditBaseForm, ClubAcademyEditForm
 from app.edit_form import PlayerEditForm, ScoutEditForm, SponsorEditForm
-from app.edit_form import ClubEditForm, AcademyEditForm, ClubAcademyEditForm
+from app.edit_form import ClubEditForm, AcademyEditForm
 from app.models.basemodel import BaseModel
 from app.models.player import Player
 from app.models.scout import Scout
@@ -25,7 +25,7 @@ main_app = Blueprint('main2', __name__)
 @login_required
 def home():
     """Home page"""
-    return f"Home page "
+    return render_template('index.html')
 
 
 @main_app.route('/players', methods=['GET'])
@@ -101,7 +101,7 @@ def profile(user_type):
 
         form.name.data = current_user.name
         form.bio.data = current_user.bio
-        form.DOB.data = current_user.dob
+        form.DOB.data = current_user.DOB
         form.country.data = current_user.country
         form.city.data = current_user.city
         form.postal_code.data = current_user.postal_code
@@ -110,9 +110,8 @@ def profile(user_type):
         form.organization.data = current_user.organization
     return render_template(template, form=form, user_type=user_type)
 
+
 # academy and club view function
-
-
 @main_app.route('/edit_club/<user_type>', methods=['GET', 'POST'])
 def edit_club(user_type):
     """Route to edit club"""
@@ -135,20 +134,18 @@ def edit_club(user_type):
     return render_template(template, form=club_academy_form)
 
 # user_type function
-
-
 def get_edit_form_usertype(user_type):
     """Function to get user edit form"""
 
-    if user_type == 'player':
+    if user_type == 'players':
         return PlayerEditForm(), 'player_profile.html'
-    elif user_type == 'scout':
+    elif user_type == 'scouts':
         return ScoutEditForm(), 'scout_profile.html'
-    elif user_type == 'sponsor':
+    elif user_type == 'sponsors':
         return SponsorEditForm(), 'sponsor_profile.html'
-    elif user_type == 'club':
+    elif user_type == 'clubs':
         return ClubEditForm(), 'club_profile.html'
-    elif user_type == 'academy':
+    elif user_type == 'academies':
         return AcademyEditForm(), 'academy_profile.html'
     else:
         return None, None
@@ -156,7 +153,7 @@ def get_edit_form_usertype(user_type):
 # Get user id
 # def get_user_id(user_type, user_id):
 #     """Function to get user id"""
-#
+# 
 #     if user_type == 'player':
 #         user = Player.query.get(user_id)
 #     elif user_type == 'scout':
@@ -165,6 +162,6 @@ def get_edit_form_usertype(user_type):
 #         user = Sponsor.query.get(user_id)
 #     else:
 #         user = None
-#
+# 
 #     return user
-#
+# 
