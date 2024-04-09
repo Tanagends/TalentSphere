@@ -25,26 +25,28 @@
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#about">About Us</a>
+          <a class="nav-link" href="/profiles">Profiles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#features">Our Offers</a>
+          <a class="nav-link" href="/team">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact Us</a>
+          <a class="nav-link" href="/contact">Contact Us</a>
         </li>
       </ul>
-      <!-- Login/Signup Dropdown -->
-      <div class="nav-item dropdown ml-auto">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <i class="fas fa-user"></i>
-          Login/Signup
-        </a>
-        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Login</a>
-          <a class="dropdown-item" href="#">Signup</a>
+    
+    <!-- Logged in user dropdown -->
+    <div class="ml-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: Tinashe Navonika
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/my_account">My Account</a>
         </div>
       </div>
+    </div>
+
     </div>
   </div>
 </nav>
@@ -110,7 +112,7 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>
@@ -124,7 +126,7 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>
@@ -138,7 +140,7 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>
@@ -152,7 +154,7 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>
@@ -166,7 +168,7 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>
@@ -179,22 +181,7 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
-          </div>
-        </div>
-      </div>
-
-
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Position: Striker</p>
-            <p class="card-text">Age: 22</p>
-            <p class="card-text">Gender: Male</p>
-            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>
@@ -209,7 +196,7 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>
@@ -224,7 +211,22 @@
             <p class="card-text">Age: 22</p>
             <p class="card-text">Gender: Male</p>
             <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">View profile</button>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="static/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">John Doe</h5>
+            <p class="card-text">Position: Striker</p>
+            <p class="card-text">Age: 22</p>
+            <p class="card-text">Gender: Male</p>
+            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
       </div>

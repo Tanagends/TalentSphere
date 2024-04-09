@@ -19,9 +19,36 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">Talent Sphere</a>
-    <!-- Assuming you have a logged-in user -->
-    <div class="ml-auto"> 
-      <a class="nav-link" href="#">Logged in as: Tinashe Navonika</a> <!-- Display username -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto"> 
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profiles">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/team">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+    
+    <!-- Logged in user dropdown -->
+    <div class="ml-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: Tinashe Navonika
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="/my_account">My Account</a>
+        </div>
+      </div>
+    </div>
+
     </div>
   </div>
 </nav>

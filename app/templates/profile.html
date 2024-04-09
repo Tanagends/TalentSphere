@@ -19,6 +19,24 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
     <a class="navbar-brand" href="#">Talent Sphere</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto"> 
+          <a class="nav-link" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profiles">Profiles</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/team">About Us</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/contact">Contact Us</a>
+        </li>
+      </ul>
+    
     <!-- Logged in user dropdown -->
     <div class="ml-auto">
       <div class="dropdown">
@@ -26,77 +44,122 @@
           Logged in as: Tinashe Navonika
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="player_account.html">My Account</a>
+          <a class="dropdown-item" href="/my_account">My Account</a>
         </div>
       </div>
+    </div>
+
     </div>
   </div>
 </nav>
 
-<!-- Page Content -->
 <div class="container mt-5">
   <h2 class="mb-4 text-center">Profile</h2>
   
-  <!-- Personal Details -->
-  <div class="row">
-    <div class="col-md-6">
-      <!-- Profile Picture -->
-      <div class="text-center">
-        <img src="static/images/profile1.jpg" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
-      </div>
-      <!-- Bio -->
-      <div class="mt-4">
-        <h5>Bio:</h5>
-        <p>Current bio goes here</p>
-      </div>
-      <!-- Date of Birth -->
-      <div class="mt-4">
-        <h5>Date of Birth:</h5>
-        <p>1900-01-01</p>
-      </div>
-      <!-- City -->
-      <div class="mt-4">
-        <h5>City:</h5>
-        <p>New York</p>
-      </div>
-      <!-- Club -->
-      <div class="mt-4">
-        <h5>Club:</h5>
-        <p>FC Barcelona</p>
-      </div>
-      <!-- Academy -->
-      <div class="mt-4">
-        <h5>Academy:</h5>
-        <p>Talent Academy</p>
-      </div>
-    </div>
-  </div>
-  
-  <!-- Videos -->
-  <div class="mt-5">
-    <h4 class="text-center mb-4">Videos</h4>
-    <div class="row">
-      <!-- Video 1 -->
-      <div class="col-md-4 mb-3">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/t0jWf68tz9A" allowfullscreen></iframe>
+  <!-- Profile Card -->
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <!-- Profile Picture -->
+        <div class="col-md-3 text-center">
+          <img src="static/images/profile1.jpg" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
         </div>
-      </div>
-      <!-- Video 2 -->
-      <div class="col-md-4 mb-3">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/t0jWf68tz9A" allowfullscreen></iframe>
-        </div>
-      </div>
-      <!-- Video 3 -->
-      <div class="col-md-4 mb-3">
-        <div class="embed-responsive embed-responsive-16by9">
-          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/t0jWf68tz9A" allowfullscreen></iframe>
+        <!-- Personal Details -->
+        <div class="col-md-9">
+          <!-- Bio -->
+          <div class="mt-4">
+            <h5>Bio:</h5>
+            <p>Current bio goes here</p>
+          </div>
+          <!-- Date of Birth -->
+          <div class="mt-4">
+            <h5>Date of Birth:</h5>
+            <p>1900-01-01</p>
+          </div>
+          <!-- City -->
+          <div class="mt-4">
+            <h5>City:</h5>
+            <p>New York</p>
+          </div>
+          <!-- Club -->
+          <div class="mt-4">
+            <h5>Club:</h5>
+            <p>FC Barcelona</p>
+          </div>
+          <!-- Academy -->
+          <div class="mt-4">
+            <h5>Academy:</h5>
+            <p>Talent Academy</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+  
+  <div class="container mt-5">
+  <h4 class="text-center mb-4">Videos</h4>
+  <!-- Videos -->
+  <div class="row">
+    <!-- Video 1 -->
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/t0jWf68tz9A" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Video Title 1</h5>
+          <p class="card-text">Description of video 1</p>
+        </div>
+      </div>
+    </div>
+    <!-- Video 2 -->
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/t0jWf68tz9A" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Video Title 2</h5>
+          <p class="card-text">Description of video 2</p>
+        </div>
+      </div>
+    </div>
+    <!-- Video 3 -->
+    <div class="col-md-4 mb-3">
+      <div class="card">
+        <div class="embed-responsive embed-responsive-16by9">
+          <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/t0jWf68tz9A" allowfullscreen></iframe>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Video Title 3</h5>
+          <p class="card-text">Description of video 3</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
+
 
 <!-- Bootstrap JS, jQuery, Popper.js -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
