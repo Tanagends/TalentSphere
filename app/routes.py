@@ -116,8 +116,10 @@ def login():
             user = UserModel.query.filter_by(email=form.email.data).first()
             if user and user.check_password(form.password.data):
                 login_user(user)
-                user.role = UserModel.__tablename__
+                user.role = UserModel.__name__.lower()
                 flash('You are now signed in')
+                print(f"User role: {current_user.role}")
+                print(f"Current user: {current_user}")
                 return redirect(url_for('main2.home'))
 
         form.password.errors.append('Invalid email or password')

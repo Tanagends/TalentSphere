@@ -22,10 +22,10 @@ main_app = Blueprint('main2', __name__)
 
 
 @main_app.route('/home')
-@login_required
+# @login_required
 def home():
     """Home page"""
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @main_app.route('/players', methods=['GET'])
@@ -92,11 +92,11 @@ def profile(user_type):
         try:
             db.session.commit()
             flash("Congratulation, changes saved successfully", 'success')
-            return redirect(f'/edit_profile/{user_type}')
+            return redirect(url_for('main_app.profile', user_type=user_type))
         except SQLAlchemyError as e:
             db.session.rollback()
             flash("Oops! there was an error in your update", 'error')
-            return redirect(f"/edit_profile/{user_type}")
+            return redirect(url_for('main_app.profile', user_type=user_type))
     elif request.method == 'GET':
 
         form.name.data = current_user.name

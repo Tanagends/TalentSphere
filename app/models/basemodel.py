@@ -23,7 +23,7 @@ class BaseModel(db.Model):
     password = db.Column(db.String(2048), nullable=False)
     
     is_active = db.Column(db.Boolean, default=True)
-    role = ""
+    # role = ""
 
     def is_active(self):
         """Check if the user account is active"""
@@ -52,3 +52,16 @@ class BaseModel(db.Model):
     def check_password(self, passwd):
         """check password to confirm before login in"""
         return check_password_hash(self.password, passwd)
+
+
+
+#Create a role in the database to determine user base on role
+class Role(db.Model):
+    __tablename__ = 'roles'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), unique=True, nullable=False)
+    description = db.Column(db.String(255))
+    
+    def __repr__(self):
+        return f'<Role {self.name}>'
