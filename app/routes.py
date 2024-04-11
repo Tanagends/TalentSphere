@@ -131,6 +131,7 @@ def contact():
 
 
 @main_app.route('/team')
+def team():
     """Team page view"""
     return render_template('team.html')
 
