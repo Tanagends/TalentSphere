@@ -25,7 +25,7 @@ main_app = Blueprint('main2', __name__)
 @login_required
 def home():
     """Home page"""
-    return render_template('index.html')
+    return render_template('home.html')
 
 
 @main_app.route('/players', methods=['GET'])

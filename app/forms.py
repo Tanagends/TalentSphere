@@ -46,7 +46,8 @@ class ScoutPlayerForm(BaseForm):
     gender = SelectField('Gender',  choices=[("male", "Male"), ("female", "Female")], validators=[DataRequired()])
     club = StringField('Club', validators=[Length(max=36)])
     academy = StringField('Academy', validators=[Length(max=36)])
-    profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 'png'], "Images only")])
+    profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 
+                                   'jpeg', 'ico', 'tff', 'gif', 'png'], "Images only")])
     
 
 class PlayerForm(ScoutPlayerForm):
@@ -81,12 +82,14 @@ class ScoutForm(ScoutPlayerForm):
 
 class ClubForm(BaseForm):
     """Club registration form"""
-    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png'], "Images only")])
+    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png', 'jpeg',
+                          'ico', 'tff', 'gif'], "Images only")])
 
 
 class AcademyForm(BaseForm):
     """Academy registration form"""
-    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png'], "Images only")])
+    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png',
+                          'jpeg', 'ico', 'tff', 'gif'], "Images only")])
 
 
 class SponsorForm(BaseForm):
@@ -94,7 +97,8 @@ class SponsorForm(BaseForm):
 
     organization = StringField('Organization')
     gender = SelectField('gender',  choices=[('male', 'Male'), ('female', 'Female')], validators=[DataRequired()])
-    profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 'png'], "Images only")])
+    profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg',
+                                   'jpeg', 'ico', 'tff', 'gif','png'], "Images only")])
 
 
 class LoginForm(FlaskForm):
