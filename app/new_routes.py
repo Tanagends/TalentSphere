@@ -32,7 +32,7 @@ def profile():
 @main3.route('/profile/<string:id>', strict_slashes=False)
 def profile(id):
 
-    Displays the profile of the player
+    #Displays the profile of the player
 
     player = Player.query.get(id)
     pl_dict = {k: v for k, v in player.__dict__.items() if k in Player.__table__.columns.keys()}

@@ -22,7 +22,7 @@ main_app = Blueprint('main2', __name__)
 
 
 @main_app.route('/home')
-@login_required
+#@login_required
 def home():
     """Home page"""
     return render_template('home.html')
