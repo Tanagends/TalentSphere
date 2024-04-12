@@ -1,7 +1,7 @@
 {% extends "user1_base.html" %}
+
 {% block content %}
-<form action="" method="POST">
-    {{ form.hidden_tag() }}
+  
     <p>
         {{ form.club.label }}
         {{ form.club(size=32) }}
@@ -16,5 +16,5 @@
             <span style="color: red;">{{ error }}</span>
         {% endfor %}
     </p>
-</form>
+
 {% endblock %}
