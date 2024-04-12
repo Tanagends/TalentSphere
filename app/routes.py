@@ -126,6 +126,17 @@ def login():
 
     return render_template('login.html', form=form)
 
+@main_app.route('/contact')
+def contact():
+    """Contact page view"""
+    return render_template('contact.html')
+
+
+@main_app.route('/team')
+def team():
+    """Team page view"""
+    return render_template('team.html')
+
 
 @main_app.route('/logout')
 def logout():

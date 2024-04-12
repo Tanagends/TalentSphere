@@ -27,11 +27,12 @@ main3 = Blueprint('main3', __name__)
 @main3.route('/profile')
 def profile():
     return render_template('profile.html')
+
 """
 @main3.route('/profile/<string:id>', strict_slashes=False)
 def profile(id):
 
-    Displays the profile of the player
+    #Displays the profile of the player
 
     player = Player.query.get(id)
     pl_dict = {k: v for k, v in player.__dict__.items() if k in Player.__table__.columns.keys()}
@@ -40,6 +41,7 @@ def profile(id):
 
     return render_template('profile.html', player=pl_dict)
 """
+
 @main3.route('/profiles', methods=["GET", "POST"], strict_slashes=False)
 def profiles():
     """Shows the profiles of the players"""

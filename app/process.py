@@ -16,7 +16,7 @@ def upload_profile_image(profile):
     filen, ext = os.path.splitext(profile.filename)
     filenam = os.path.join(str(uuid4()), ext)
     filename = secure_filename(filenam)
-    filepath = os.path.join('static/profile_pics/', filename)
+    filepath = os.path.join('/static/profile_pics/', filename)
     profile.save(filepath)
     return filepath
 
