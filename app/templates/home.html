@@ -39,10 +39,10 @@
     <div class="ml-auto">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Logged in as: Tinashe Navonika
+          Logged in as: {{ current_user.name }}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/my_account">My Account</a>
+          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
         </div>
       </div>
     </div>

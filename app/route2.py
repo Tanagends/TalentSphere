@@ -1,6 +1,7 @@
 """Our views for the Talent Sphere Application"""
-from flask import render_template, redirect, url_for, flash, Blueprint
+from flask import render_template, redirect, url_for, flash, Blueprint, current_app
 from flask_login import current_user, login_required
+from werkzeug.utils import secure_filename
 from flask import request
 from sqlalchemy.exc import SQLAlchemyError
 from app.edit_form import EditBaseForm, ClubAcademyEditForm
@@ -12,8 +13,10 @@ from app.models.scout import Scout
 from app.models.club import Club
 from app.models.academy import Academy
 from app.models.sponsor import Sponsor
+from config import Config
 from sqlalchemy import func
 from datetime import datetime
+import os
 from functools import reduce
 from app import db
 
@@ -74,41 +77,56 @@ def player_filter(age, gender, position):
     return list(filtered_player)
 
 
-@main_app.route('/edit_profile/<user_type>', methods=['GET', 'POST'])
-def profile(user_type):
+@main_app.route('/edit_profile/player', methods=['GET', 'POST'])
+def profile():
     """Route to edit user profile"""
-    form, template = get_edit_form_usertype(user_type)
+    # form, template = get_edit_form_usertype(user_type)
+    
+    form = PlayerEditForm()
 
     if form.validate_on_submit():
         current_user.name = form.name.data
         current_user.bio = form.bio.data
-        current_user.dob = form.DOB.data
+        current_user.DOB = form.DOB.data
+        current_user.gender = form.gender.data
         current_user.country = form.country.data
         current_user.city = form.city.data
         current_user.postal_code = form.postal_code.data
         current_user.club = form.club.data
         current_user.academy = form.academy.data
-        current_user.organization = form.organization.data
+        
+        file = form.profile_image_path.data
+        file_path = upload_file(file)
+        
+        #check if not None
+        if file and file_path:
+            current_user.save(file, file_path) #save the file
+        print(current_user.profile_image_path)
+        # current_user.organization = form.organization.data
         try:
             db.session.commit()
             flash("Congratulation, changes saved successfully", 'success')
-            return redirect(url_for('main_app.profile', user_type=user_type))
+            return redirect(url_for('main2.profile'))
         except SQLAlchemyError as e:
             db.session.rollback()
             flash("Oops! there was an error in your update", 'error')
-            return redirect(url_for('main_app.profile', user_type=user_type))
+            return redirect(url_for('main2.profile'))
     elif request.method == 'GET':
 
         form.name.data = current_user.name
         form.bio.data = current_user.bio
         form.DOB.data = current_user.DOB
+        form.gender.data = current_user.gender
         form.country.data = current_user.country
         form.city.data = current_user.city
         form.postal_code.data = current_user.postal_code
         form.club.data = current_user.club
         form.academy.data = current_user.academy
-        form.organization.data = current_user.organization
-    return render_template(template, form=form, user_type=user_type)
+        form.profile_image_path.data = current_user.profile_image_path
+        print(form.profile_image_path.data)
+        # form.organization.data = current_user.organization
+    return render_template('player_profile.html', form=form)
+    # return render_template(template, form=form, user_type=user_type)
 
 
 # academy and club view function
@@ -149,6 +167,21 @@ def get_edit_form_usertype(user_type):
         return AcademyEditForm(), 'academy_profile.html'
     else:
         return None, None
+
+
+def upload_file(file_to_upload):
+    """Function to upload a file to the specified path
+    - file_to_upload: file to upload
+    """
+    uploaded_files = file_to_upload
+    
+    if uploaded_files:
+        filename = secure_filename(uploaded_files.filename)
+        uploaded_dir = current_app.config['UPLOAD_IMAGES']
+        file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), uploaded_dir, filename)
+        return file_path
+    else:
+        return None
 
 # Get user id
 # def get_user_id(user_type, user_id):

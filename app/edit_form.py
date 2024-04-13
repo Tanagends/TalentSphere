@@ -1,7 +1,9 @@
 """Module to handle all user profile"""
 
 from flask_wtf import FlaskForm
+from datetime import date
 from flask_wtf.file import FileField, FileAllowed
+from werkzeug.utils import secure_filename
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, DateField, IntegerField, SelectField
 from wtforms.validators import DataRequired, Length
 
@@ -14,7 +16,8 @@ class EditBaseForm(FlaskForm):
     country = StringField('Country', validators=[DataRequired()])
     city = StringField('City', validators=[DataRequired()])
     postal_code = IntegerField('Postal Code')
-    profile_pic = FileField('Profile Picture', validators=[
+    gender = SelectField('Gender', choices=[("male", "Male"), ("female", "Female")], validators=[DataRequired()])
+    profile_image_path = FileField('Profile Picture', validators=[
                             FileAllowed(['jpg', 'png'], "Images only")])
     submit = SubmitField('Save Changes')
 

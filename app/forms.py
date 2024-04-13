@@ -3,6 +3,7 @@
 from flask_wtf import FlaskForm
 from flask_wtf.file import FileField, FileRequired, FileAllowed
 from wtforms.validators import Email
+from datetime import date
 from wtforms import StringField, PasswordField, SubmitField, DateField, IntegerField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, Optional
 from app.models.player import Player
@@ -48,6 +49,18 @@ class ScoutPlayerForm(BaseForm):
     academy = StringField('Academy', validators=[Length(max=36)])
     profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg', 
                                    'jpeg', 'ico', 'tff', 'gif', 'png'], "Images only")])
+    
+    @property
+    def age(self):
+        """Calculate the actual age of a current user"""
+        today = date.today()
+        if self.DOB:
+            age = today.year - self.DOB.year
+            if ((today.month, today.day) < (self.DOB.month, self.DOB.day)):
+                age -= 1
+            return age
+        else:
+            return None 
     
 
 class PlayerForm(ScoutPlayerForm):

@@ -39,10 +39,10 @@
     <div class="ml-auto">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Logged in as: Tinashe Navonika
+          Logged in as: {{ current_user.name }}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/my_account">My Account</a>
+          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
         </div>
       </div>
     </div>
@@ -105,13 +105,13 @@
       <!-- Ideally we should add Profile cards dynamically here from the backend -->
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="images/prof1.jpg" class="card-img-top" alt="Profile 1">
+          <img src="{{ url_for('static', filename=current_user.profile_image_path) }}" class="card-img-top" alt="Profile 1">
           <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Position: Striker</p>
-            <p class="card-text">Age: 22</p>
-            <p class="card-text">Gender: Male</p>
-            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <h5 class="card-title">Name: {{ current_user.name }}</h5>
+            <p class="card-text">Position: {{ current_user.position }}</p>
+            <p class="card-text"> Age: {{ current_user.age }}</p>
+            <p class="card-text"> Gender: {{ current_user.gender }} </p>
+            <p class="card-text">Bio: {{ current_user.bio }}.</p>
             <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>

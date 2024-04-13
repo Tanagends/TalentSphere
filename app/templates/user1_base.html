@@ -28,16 +28,22 @@
     <!-- Main Content -->
     <div class="container mt-5">
         <h2 class="mb-4 text-center">My Account</h2>
-        <form action="/edit_profile/{{ user_type }}" method="POST">
+        <form action="/edit_profile/player" method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="form_group">
                 <p>
-                  {{ form.profile_pic.label }}
-                  {{ form.profile_pic(size=32) }}<br>
-                  {% for error in form.profile_pic.errors %}
+                  {{ form.profile_image_path.label }}
+                  {{ form.profile_image_path(size=32) }}<br>
+                  {% for error in form.profile_image_path.errors %}
                     <span style="color: red;">{{ error }}</span>
                   {% endfor %}
                 </p>
+                <!-- Render the uploaded profile image if it exists -->
+                {% if current_user.profile_image_path %}
+                <p>
+                  <img src="{{ url_for('static', filename=current_user.profile_image_path) }}" alt="Profile Image" style="max-width: 150px; max-height: 150px;">
+                </p>
+                {% endif %}
                 <p>
                   {{ form.bio.label }}<br>
                   {{ form.bio(cols=32, rows=4) }}<br>
@@ -59,6 +65,14 @@
                     <span style="color: red;">{{ error }}</span>
                   {% endfor %}
                 </p>
+
+                {{ form.gender.label }}
+                <br>
+                {{ form.gender }}
+                {% for error in form.gender.errors %}
+                     <span>{{ error }}</span>
+                {% endfor %}
+
                 <p>
                   {{ form.country.label }}<br>
                   {{ form.country(size=32) }}<br>
@@ -80,7 +94,7 @@
                     <span style="color: red;">{{ error }}</span>
                   {% endfor %}
                 </p>
-
+                {% block content %}{% endblock %}
                 <p>{{ form.submit() }}</p>
             </div>
         </form>
