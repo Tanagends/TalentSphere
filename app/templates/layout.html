@@ -64,7 +64,7 @@
 <!-- Main Content -->
 <div class="container mt-5">
     <h1>Welcome to our sign up for {{ user }}! The sky is about to be the limit!!</h1>
-    <form action="{% block form_action %}{% endblock %}" method='post'>
+    <form action="{% block form_action %}{% endblock %}" enctype="multipart/form-data" method='post'>
         <fieldset>
             <legend>Personal Information</legend>
             {{ form.hidden_tag() }}

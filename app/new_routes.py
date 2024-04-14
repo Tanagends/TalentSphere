@@ -32,13 +32,12 @@ def profile():
 @main3.route('/profile/<string:id>', strict_slashes=False)
 def profile(id):
 
-    #Displays the profile of the player
+    Displays the profile of the player
 
     player = Player.query.get(id)
     pl_dict = {k: v for k, v in player.__dict__.items() if k in Player.__table__.columns.keys()}
     pl_dict.pop('email', None)
     pl_dict.pop('password', None)
-
     return render_template('profile.html', player=pl_dict)
 """
 
@@ -57,10 +56,12 @@ def profiles():
 
     else:
         search_dict = {}
+        """
         if request.form.get('gender'):
             search_dict['gender'] = request.form.get('gender')
         if request.form.get('position'):
             search_dict['position'] = request.form.get('position')
+        """
 
         search_lis = [k == v for k, v in search_dict.items()]
 

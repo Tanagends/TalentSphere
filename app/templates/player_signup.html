@@ -4,6 +4,7 @@
 {% block form_action %}/signup/player{% endblock form_action %}
 
 {% block surname %}
+
     {{ form.surname.label }} {{ form.surname }}
     <br>
     {% for error in form.surname.errors %}
@@ -40,12 +41,13 @@
     {% for error in form.academy.errors %}
         <span>{{ error }}</span>
     {% endfor %}
-  {% endblock surname %}
-  
-  {% block uploads %}
+
+{% endblock surname %}
+ 
+{% block uploads %}
     {{ form.profile_image_path.label }} <br>
     {{ form.profile_image_path }}
     {% for error in form.profile_image_path.errors %}
         <span>{{ error }}</span>
     {% endfor %}
-  {% endblock uploads %}
+{% endblock uploads %}
