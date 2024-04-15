@@ -19,20 +19,33 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
+      <ul class="navbar-nav mr-auto"> 
           <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#about">About Us</a>
+          <a class="nav-link" href="/profiles">Profiles</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#features">Our Offers</a>
+          <a class="nav-link" href="/team">About Us</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#contact">Contact Us</a>
+          <a class="nav-link" href="/contact">Contact Us</a>
         </li>
       </ul>
+    
+    <!-- Logged in user dropdown -->
+    <div class="ml-auto">
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: {{ current_user.name }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
+          <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a> <!-- Add this line -->
+        </div>
+      </div>
+    </div>
+
     </div>
   </div>
 </nav>
