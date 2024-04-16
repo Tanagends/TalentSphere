@@ -16,6 +16,7 @@ from app.models.club import Club
 from app.models.academy import Academy
 from app.models.sponsor import Sponsor
 from app.process import base_fields, user_signup_helper
+from sqlalchemy import func
 from app import db
 from app import login_manager
 from app.routes import main_app

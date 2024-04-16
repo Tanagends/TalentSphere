@@ -28,7 +28,7 @@
     <!-- Main Content -->
     <div class="container mt-5">
         <h2 class="mb-4 text-center">My Account</h2>
-        <form action="/edit_profile/player" method="POST" enctype="multipart/form-data">
+        <form action="{{ url_for('main2.profile', user_type=user_type) }}" method="POST" enctype="multipart/form-data">
             {{ form.hidden_tag() }}
             <div class="form_group">
                 <p>
@@ -42,6 +42,10 @@
                 {% if current_user.profile_image_path %}
                 <p>
                   <img src="{{ url_for('static', filename=current_user.profile_image_path) }}" alt="Profile Image" style="max-width: 150px; max-height: 150px;">
+                </p>
+                {% else %}
+                <p>
+                  <img src="{{ url_for('static', filename='default.jpg') }}" alt="Profile Image" style="max-width: 150px; max-height: 150px;">
                 </p>
                 {% endif %}
                 <p>
@@ -87,6 +91,12 @@
                     <span style="color: red;">{{ error }}</span>
                   {% endfor %}
                 </p>
+                <p>
+                  {{ form.email.label }}<br>
+                  {{ form.email(size=32) }}<br>
+                  {% for error in form.email.errors %}
+                    <span style="color: red;">{{ error }}</span>
+                  {% endfor %}
                 <p>
                   {{ form.postal_code.label }}<br>
                   {{ form.postal_code(size=32) }}<br>

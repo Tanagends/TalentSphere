@@ -1,7 +1,7 @@
 """Our views for the Talent Sphere Application"""
 from flask import render_template, redirect, url_for, flash, Blueprint
 from flask_login import current_user, login_user, logout_user, login_required
-from flask import request
+from flask import request, session
 from app.forms import BaseForm
 from app.forms import ScoutPlayerForm
 from app.forms import PlayerForm
@@ -107,7 +107,7 @@ def login():
     """Logs in the user"""
 
     if current_user.is_authenticated:
-        return redirect(url_for('main.index'))
+        return redirect(url_for('main2.home'))
 
     form = LoginForm()
     if form.validate_on_submit():
@@ -116,10 +116,10 @@ def login():
             user = UserModel.query.filter_by(email=form.email.data).first()
             if user and user.check_password(form.password.data):
                 login_user(user)
-                user.role = UserModel.__name__.lower()
+                session['user_id'] = user.id
+                session['user_type'] = UserModel.__name__.lower()
+                # user.role = UserModel.__name__.lower()
                 flash('You are now signed in')
-                print(f"User role: {current_user.role}")
-                print(f"Current user: {current_user}")
                 return redirect(url_for('main2.home'))
 
         form.password.errors.append('Invalid email or password')
@@ -141,4 +141,5 @@ def team():
 @main_app.route('/logout')
 def logout():
     logout_user()
+    session.clear()
     return redirect(url_for('main.login'))
