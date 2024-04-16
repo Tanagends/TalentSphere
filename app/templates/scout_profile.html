@@ -1,0 +1,20 @@
+{% extends "user1_base.html" %}
+
+{% block content %}
+  
+    <p>
+        {{ form.club.label }}
+        {{ form.club(size=32) }}
+        {% for error in form.club.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.academy.label }}
+        {{ form.academy(size=32) }}
+        {% for error in form.academy.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+    </p>
+
+{% endblock %}

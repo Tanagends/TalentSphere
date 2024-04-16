@@ -42,7 +42,7 @@
           Logged in as: {{ current_user.name }}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
+          <a class="dropdown-item" href="{{ url_for('main2.profile', user_type=user_type) }}">My Account</a>
         </div>
       </div>
     </div>

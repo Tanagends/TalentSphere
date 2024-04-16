@@ -1,11 +1,15 @@
 """Talent Sphere BaseModel"""
 
 from uuid import uuid4
+from flask_login import UserMixin
+from flask import current_app
+from itsdangerous import URLSafeTimedSerializer as serializer
 from werkzeug.security import generate_password_hash, check_password_hash
 from datetime import datetime, timezone
+from app import Config
 from app import db
 
-class BaseModel(db.Model):
+class BaseModel(db.Model, UserMixin):
     """Our Base Model to be inherited by all the other models"""
 
     __abstract__ = True
@@ -23,7 +27,24 @@ class BaseModel(db.Model):
     password = db.Column(db.String(2048), nullable=False)
     
     is_active = db.Column(db.Boolean, default=True)
-    # role = ""
+    
+    def get_reset_token(self, expired_sec=3600):
+        """
+        - get_reset_token: function to get token
+        - expired_sec: the seconds it will take before token expired
+        """
+        s = serializer(current_app.Config['SECRET_KEY'], expired_sec)
+        token = s.dumps({'user_id': self.id})
+        return token
+    
+    def verify_reset_token(token):
+        """Verify user token"""
+        s = serializer(current_app.Config['SECRET_KEY'])
+        try:
+            user_id = s.loads(token)['user_id']
+        except:
+            return None
+        return User.query.get(user_id)
 
     def is_active(self):
         """Check if the user account is active"""
@@ -37,10 +58,6 @@ class BaseModel(db.Model):
         """Check if the user is authenticated"""
         return True  # Assuming all users are authenticated
 
-    # def is_active(self):
-    #     """Check if the user account is active"""
-    #     return True  # Assuming all user accounts are active
-
     def is_anonymous(self):
         """Check if the user is anonymous"""
         return False  # Assuming no anonymous users
@@ -53,15 +70,3 @@ class BaseModel(db.Model):
         """check password to confirm before login in"""
         return check_password_hash(self.password, passwd)
 
-
-
-#Create a role in the database to determine user base on role
-class Role(db.Model):
-    __tablename__ = 'roles'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(50), unique=True, nullable=False)
-    description = db.Column(db.String(255))
-    
-    def __repr__(self):
-        return f'<Role {self.name}>'
