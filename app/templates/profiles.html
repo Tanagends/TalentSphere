@@ -104,19 +104,26 @@
     <div class="row" id="profileList">
     
       <!-- Ideally we should add Profile cards dynamically here from the backend -->
+      {% for player in players %}
       <div class="col-md-4 mb-4">
         <div class="card">
-          <img src="{{ url_for('static', filename=current_user.profile_image_path) }}" class="card-img-top" alt="Profile 1">
+          <img src="{{ player.profile_image_path }}" class="card-img-top" alt="Profile 1">
           <div class="card-body">
-            <h5 class="card-title">Name: {{ current_user.name }}</h5>
-            <p class="card-text">Position: {{ current_user.position }}</p>
-            <p class="card-text"> Age: {{ current_user.age }}</p>
-            <p class="card-text"> Gender: {{ current_user.gender }} </p>
-            <p class="card-text">Bio: {{ current_user.bio }}</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+            <h5 class="card-title">Name: {{ player.name }}</h5>
+            <p class="card-text">Position: {{ player.position }}</p>
+            <p class="card-text"> Age: {{ player.age }}</p>
+            <p class="card-text"> Gender: {{ player.gender }} </p>
+            <p class="card-text">Bio: {{ player.bio }}</p>
+      
+            <form action="/profiles" method="get">
+              <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
+            </form>
           </div>
         </div>
       </div>
+      {% endfor %}
+
+      <!--
 
       <div class="col-md-4 mb-4">
         <div class="card">
@@ -231,6 +238,7 @@
           </div>
         </div>
       </div>
+    -->
     </div>
   </div>
 </section>
