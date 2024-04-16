@@ -1,0 +1,57 @@
+<!-- Main Content -->
+<div class="container mt-5">
+    <h1>Welcome {{ user }}!</h1>
+    <form action="{% block form_action %}{% endblock %}" enctype="multipart/form-data" method='post'>
+        <fieldset>
+            <legend>Personal Information</legend>
+            {{ form.hidden_tag() }}
+            {{ form.name.label }} {{ form.name }}
+            {% for error in form.name.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+            {% block surname %} {% endblock surname %}
+        </fieldset>
+        <fieldset>
+            <legend>Contact Details</legend>
+            {{ form.email.label }} {{ form.email }}
+            {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+            {{ form.phone_number.label }} {{ form.phone_number }}
+            {% for error in form.phone_number.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <legend>Location</legend>
+            {{ form.city.label}} {{ form.city }}
+            {% for error in form.city.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+            {{ form.country.label }} {{ form.country }}
+            {% for error in form.country.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+            {{ form.postal_code.label }} {{ form.postal_code }}
+            {% for error in form.postal_code.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <legend>Password Setup</legend>
+            {{ form.password.label }} {{ form.password }}
+            {% for error in form.password.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+            {{ form.confirm_password.label }} {{ form.confirm_password }}
+            {% for error in form.confirm_password.errors %}
+                <span>{{ error }}</span>
+            {% endfor %}
+        </fieldset>
+        <fieldset>
+            <legend>Image Uploads</legend>
+            {% block uploads %}{% endblock uploads %}
+        </fieldset>
+        {{ form.submit() }}
+    </form>
+</div>

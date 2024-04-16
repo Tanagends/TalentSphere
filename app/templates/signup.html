@@ -25,7 +25,7 @@
         </li>
                
                <li class="nav-item">
-           <a class="nav-link" href="/about">About Us</a>
+           <a class="nav-link" href="/team">About Us</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/contact">Contact Us</a>
@@ -39,9 +39,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
 
-          <a class="dropdown-item" href="login.htmlS">Login</a>
-          <a class="dropdown-item" href="#">Signup</a>
-
+         
           <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
           <a class="dropdown-item" href="{{ url_for('main.sign_up') }}">Signup</a>
 
@@ -51,15 +49,38 @@
   </div>
 </nav>
 
-<!-- Main Content -->
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
 
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Main Content -->
 <div class="container mt-5">
+  <h1 class="text-center mb-4">Welcome to Talent Sphere</h1>
+  <p class="text-center mb-4">We ignite dreams for footballers, inspire investors and sponsors with scintillating talent, and mesmerize scouts, clubs, and academies.</p>
   <div class="row justify-content-center">
     <div class="col-md-8">
       <div class="card shadow">
         <div class="card-body">
-          <h1 class="card-title text-center mb-4">Welcome to Talent Sphere</h1>
-          <p class="card-text text-center">We ignite dreams for footballers, inspire investors and sponsors with scintillating talent, and mesmerize scouts, clubs, and academies.</p>
           <p class="card-text text-center">Who are you joining us as?</p>
           <form action="/signup" method="POST" class="text-center">
             <div class="form-group">
@@ -79,7 +100,6 @@
   </div>
 </div>
 
-
 <!-- Blank section for spacing areas -->
 <section id="spacer" class="py-5">
   <div class="container">
@@ -93,12 +113,27 @@
 
 
 
+
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
+</section>
+
+
 <!-- Footer -->
 <footer class="bg-dark text-white py-4">
   <div class="container text-center">
     <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
   </div>
 </footer>
+
+
 
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

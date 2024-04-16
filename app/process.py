@@ -14,10 +14,14 @@ def upload_profile_image(profile):
     if not profile:
         return
     filen, ext = os.path.splitext(profile.filename)
-    filenam = os.path.join(str(uuid4()), ext)
+    filenam = os.path.join(str(uuid4()) + ext)
     filename = secure_filename(filenam)
-    filepath = os.path.join('/static/profile_pics/', filename)
-    profile.save(filepath)
+    profile.filename = filename
+    filepath = os.path.join('app/static/profile_pics/', filename)
+    try:
+        profile.save(filepath)
+    except Exception as e:
+        print("Error saving file:", e)
     return filepath
 
 

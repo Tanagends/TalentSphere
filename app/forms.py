@@ -95,14 +95,14 @@ class ScoutForm(ScoutPlayerForm):
 
 class ClubForm(BaseForm):
     """Club registration form"""
-    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png', 'jpeg',
-                          'ico', 'tff', 'gif'], "Images only")])
+    logo_path = FileField("Logo")#, validators=[FileAllowed(['jpg', 'png', 'jpeg',
+                          #'ico', 'tff', 'gif'], "Images only")])
 
 
 class AcademyForm(BaseForm):
     """Academy registration form"""
-    logo_path = FileField("Logo", validators=[FileAllowed(['jpg', 'png',
-                          'jpeg', 'ico', 'tff', 'gif'], "Images only")])
+    logo_path = FileField("Logo")#, validators=[FileAllowed(['jpg', 'png',
+                          #'jpeg', 'ico', 'tff', 'gif'], "Images only")])
 
 
 class SponsorForm(BaseForm):

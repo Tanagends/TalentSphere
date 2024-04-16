@@ -12,9 +12,10 @@
     {% for error in form.organization.errors %}
         <span>{{ error }}</span>
     {% endfor %}
-
-    {{ form.gender }}
     <br>
+    {{ form.gender.label }}
+    <br>
+    {{ form.gender }}
     {% for error in form.gender.errors %}
         <span>{{ error }}</span>
     {% endfor %}

@@ -22,30 +22,12 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Home</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTalents" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Talents
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownTalents">
-            <a class="dropdown-item" href="#">Strikers</a>
-            <a class="dropdown-item" href="#">Midfielders 2</a>
-            <a class="dropdown-item" href="#">Defenders</a>
-            <a class="dropdown-item" href="#">Goalkeepers</a>
-          </div>
+        <a class="nav-link" href="/index">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="profiles.html">Profiles</a>
-        </li>
+           <a class="nav-link" href="/team">About Us</a>
         <li class="nav-item">
-          <a class="nav-link" href="network.html">Network</a>
-        </li>
-        <li class="nav-item">
-           <a class="nav-link" href="about.html">About Us</a>
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html">Contact Us</a>
+          <a class="nav-link" href="/contact">Contact Us</a>
         </li>
       </ul>
       <div class="dropdown">
@@ -63,100 +45,113 @@
 
 <!-- Main Content -->
 <div class="container mt-5">
-    <h1>Welcome to our sign up for {{ user }}! The sky is about to be the limit!!</h1>
-    <form action="{% block form_action %}{% endblock %}" method='post'>
-        <fieldset>
+ <h1 class="text-center mb-4">Welcome {{ user }}!</h1>
+    <form action="{% block form_action %}{% endblock %}" enctype="multipart/form-data" method='post'>
+        <fieldset class="mb-4">
             <legend>Personal Information</legend>
             {{ form.hidden_tag() }}
-            {{ form.name.label }} {{ form.name }}
-            {% for error in form.name.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
+            <div class="form-group">
+                {{ form.name.label(class="form-label") }} 
+                {{ form.name(class="form-control") }}
+                {% for error in form.name.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+            
             {% block surname %} {% endblock surname %}
+            
         </fieldset>
-        <fieldset>
+        
+        <fieldset class="mb-4">
             <legend>Contact Details</legend>
-            {{ form.email.label }} {{ form.email }}
-            {% for error in form.email.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
-            {{ form.phone_number.label }} {{ form.phone_number }}
-            {% for error in form.phone_number.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }} 
+                {{ form.email(class="form-control") }}
+                {% for error in form.email.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.phone_number.label(class="form-label") }} 
+                {{ form.phone_number(class="form-control") }}
+                {% for error in form.phone_number.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
         </fieldset>
-        <fieldset>
+        
+        <fieldset class="mb-4">
             <legend>Location</legend>
-            {{ form.city.label}} {{ form.city }}
-            {% for error in form.city.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
-            {{ form.country.label }} {{ form.country }}
-            {% for error in form.country.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
-            {{ form.postal_code.label }} {{ form.postal_code }}
-            {% for error in form.postal_code.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
+            <div class="form-group">
+                {{ form.city.label(class="form-label") }} 
+                {{ form.city(class="form-control") }}
+                {% for error in form.city.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.country.label(class="form-label") }} 
+                {{ form.country(class="form-control") }}
+                {% for error in form.country.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.postal_code.label(class="form-label") }} 
+                {{ form.postal_code(class="form-control") }}
+                {% for error in form.postal_code.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
         </fieldset>
-        <fieldset>
+        
+        <fieldset class="mb-4">
             <legend>Password Setup</legend>
-            {{ form.password.label }} {{ form.password }}
-            {% for error in form.password.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
-            {{ form.confirm_password.label }} {{ form.confirm_password }}
-            {% for error in form.confirm_password.errors %}
-                <span>{{ error }}</span>
-            {% endfor %}
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }} 
+                {{ form.password(class="form-control") }}
+                {% for error in form.password.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
+        
+            <div class="form-group">
+                {{ form.confirm_password.label(class="form-label") }} 
+                {{ form.confirm_password(class="form-control") }}
+                {% for error in form.confirm_password.errors %}
+                    <span class="text-danger">{{ error }}</span>
+                {% endfor %}
+            </div>
         </fieldset>
-        <fieldset>
+        
+        <fieldset class="mb-4">
             <legend>Image Uploads</legend>
             {% block uploads %}{% endblock uploads %}
         </fieldset>
-        {{ form.submit() }}
-    </form>
+        {{ form.submit(class="btn btn-primary") }}
+   </form>
 </div>
 
-<!-- Footer section -->
-<footer class="bg-dark text-white py-5">
+<!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
   <div class="container">
     <div class="row">
-      <div class="col-md-4 mb-4 mb-md-0">
-        <h5 class="text-uppercase">About Talent Sphere
-        </h5>
-        <p class="text-muted">Talent Sphere is a platform dedicated to connecting talented individuals with opportunities in the world of sports, particularly soccer. We provide a curated space for players, clubs, mentors, and sponsors to come together and foster growth.</p>
-      </div>
-      <div class="col-md-4 mb-4 mb-md-0">
-        <h5 class="text-uppercase">Quick Links</h5>
-        <ul class="list-unstyled">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Talents</a></li>
-          <li><a href="#">Clubs</a></li>
-          <li><a href="#">Mentors</a></li>
-          <li><a href="#">Sponsors</a></li>
-          <li><a href="#">Contact Us</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h5 class="text-uppercase mb-3">Follow Us</h5>
-        <ul class="list-inline social-icons">
-          <li class="list-inline-item"><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="row mt-4">
-      <div class="col-md-12 text-center">
-        <p class="mb-0">&copy; 2024 Talent Sphere. All rights reserved.</p>
-      </div>
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
     </div>
   </div>
-</footer>
+</section>
 
+<!-- Footer -->
+<footer class="bg-dark text-white py-4">
+  <div class="container text-center">
+    <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
+  </div>
+</footer>
 <!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
