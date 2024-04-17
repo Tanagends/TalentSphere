@@ -109,7 +109,7 @@ class SponsorForm(BaseForm):
     """Sponsor registration form"""
 
     organization = StringField('Organization')
-    gender = SelectField('gender',  choices=[('male', 'Male'), ('female', 'Female')], validators=[DataRequired()])
+    gender = SelectField('Gender',  choices=[('male', 'Male'), ('female', 'Female')], validators=[DataRequired()])
     profile_image_path = FileField("Profile Picture", validators=[FileAllowed(['jpg',
                                    'jpeg', 'ico', 'tff', 'gif','png'], "Images only")])
 

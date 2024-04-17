@@ -42,8 +42,8 @@
           Logged in as: {{ current_user.name }}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
-          <a class="dropdown-item" href="{{ url_for('logout') }}">Logout</a> <!-- Add this line -->
+          <a class="dropdown-item" href="{{ url_for('main2.profile', user_type=user_type) }}">My Account</a>
+          <a class="dropdown-item" href="/logout">Logout</a> <!-- Add this line -->
         </div>
       </div>
     </div>
@@ -58,43 +58,46 @@
     <h2 class="text-center mb-4">Player Profiles</h2>
   
   <!-- Filters Section -->
-<div class="row mb-4">
-  <div class="col-md-3">
-    <select class="form-control" id="ageFilter">
-      <option value="">Filter by Age</option>
-      <option value="U15">U15</option>
-      <option value="U18">U18</option>
-      <option value="U21">U21</option>
-      <option value="U23">U23</option>
-      <option value="Above23">Above 23</option>
-    </select>
-  </div>
-  <div class="col-md-3">
-    <select class="form-control" id="genderFilter">
-      <option value="">Filter by Gender</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-    </select>
-  </div>
-  <div class="col-md-3">
-    <select class="form-control" id="skillFilter">
-      <option value="">Filter by Skill</option>
-      <option value="Striker">Striker</option>
-      <option value="Midfielder">Midfielder</option>
-      <option value="Defender">Defender</option>
-      <option value="Goalkeeper">Goalkeeper</option>
-    </select>
-  </div>
- <div class="col-md-3">
-  <div class="input-group">
-    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
-    <div class="input-group-append">
-      <button class="btn btn-primary" type="button" id="searchButton">
-        <i class="fas fa-search"></i> 
-      </button>
-    </div>
-  </div>
-</div>
+  <form action="/profiles" method="post">
+  
+  	<div class="row mb-4">
+	  <div class="col-md-3">
+	    <select name="age" class="form-control" id="ageFilter">
+	      <option value="">Filter by Age</option>
+	      <option value="U15">U15</option>
+	      <option value="U18">U18</option>
+	      <option value="U21">U21</option>
+	      <option value="U23">U23</option>
+	      <option value="Above 23">Above 23</option>
+	    </select>
+	  </div>
+	  <div class="col-md-3">
+	    <select name="gender" class="form-control" id="genderFilter">
+	      <option value="">Filter by Gender</option>
+	      <option value="male">Male</option>
+	      <option value="female">Female</option>
+	    </select>
+	  </div>
+	  <div class="col-md-3">
+	    <select name="position" class="form-control" id="skillFilter">
+	      <option value="">Filter by Skill</option>
+	      <option value="forward">Striker</option>
+	      <option value="midfielder">Midfielder</option>
+	      <option value="defender">Defender</option>
+	      <option value="goalkeeper">Goalkeeper</option>
+	    </select>
+	  </div>
+	 <div class="col-md-3">
+	  <div class="input-group">
+	    <input type="text" class="form-control" id="searchInput" placeholder="Search...">
+	    <div class="input-group-append">
+	      <button class="btn btn-primary" type="submit" id="searchButton">
+		<i class="fas fa-search"></i> 
+	      </button>
+	    </div>
+	  </div>
+	</div>
+  </form>	
 
     
  <!-- Profiles Section -->
@@ -104,29 +107,36 @@
     <div class="row" id="profileList">
     
       <!-- Ideally we should add Profile cards dynamically here from the backend -->
+      {% for player in players %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ player.profile_image_path }}" class="card-img-top" alt="Profile 1">
+          <div class="card-body">
+            <h5 class="card-title">Name: {{ player.name }}</h5>
+            <p class="card-text">Position: {{ player.position }}</p>
+            <p class="card-text"> Age: {{ player.age }}</p>
+            <p class="card-text"> Gender: {{ player.gender }} </p>
+            <p class="card-text">Bio: {{ player.bio }}</p>
+      
+            <form action="/profile/{{ player.id }}" method="get">
+              <button type="submit" class="btn btn-primary btn-sm expand-btn">See more</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+
+      <!--
+
       <div class="col-md-4 mb-4">
         <div class="card">
           <img src="{{ url_for('static', filename=current_user.profile_image_path) }}" class="card-img-top" alt="Profile 1">
           <div class="card-body">
             <h5 class="card-title">Name: {{ current_user.name }}</h5>
             <p class="card-text">Position: {{ current_user.position }}</p>
-            <p class="card-text"> Age: {{ current_user.age }}</p>
-            <p class="card-text"> Gender: {{ current_user.gender }} </p>
-            <p class="card-text">Bio: {{ current_user.bio }}.</p>
-            <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="ststic/images/slideshow/prof1.jpg" class="card-img-top" alt="Profile 1">
-          <div class="card-body">
-            <h5 class="card-title">John Doe</h5>
-            <p class="card-text">Position: Striker</p>
-            <p class="card-text">Age: 22</p>
-            <p class="card-text">Gender: Male</p>
-            <p class="card-text">Bio: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            <p class="card-text">Age: {{ current_user.age }}</p>
+            <p class="card-text">Gender: {{ current_user.gender }}</p>
+            <p class="card-text">Bio: {{ current_user.bio }}</p>
             <button type="button" class="btn btn-primary btn-sm expand-btn">See more</button>
           </div>
         </div>
@@ -231,6 +241,7 @@
           </div>
         </div>
       </div>
+    -->
     </div>
   </div>
 </section>
@@ -239,7 +250,9 @@
   <!-- Centered button -->
     <div class="row">
       <div class="col-md-12 d-flex justify-content-center">
-        <button class="btn btn-primary" id="seeMoreBtn">See More Profiles</button>
+        <form action="/profiles" method="get" >
+        	<button class="btn btn-primary" id="seeMoreBtn" type="submit">See More Profiles</button>
+	</form>
       </div>
     </div>
   </div>

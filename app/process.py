@@ -11,23 +11,18 @@ from app import db
 
 def upload_profile_image(profile):
     """Uploads the profile picture and returns the name"""
-    print("Data:", type(profile))
-
     if not profile:
-        print("no image upload")
         return
     filen, ext = os.path.splitext(profile.filename)
     filenam = os.path.join(str(uuid4()) + ext)
     filename = secure_filename(filenam)
     profile.filename = filename
-    abs_p = os.path.abspath(os.path.dirname(__file__))
-    filepath = os.path.join(abs_p, 'static/profile_pics/', filename)
-    print(f"FilePath:", filepath)
+    filepath = os.path.join('app/static/profile_pics/', filename)
     try:
         profile.save(filepath)
     except Exception as e:
         print("Error saving file:", e)
-    return filepath
+    return filepath[4:]
 
 
 def base_fields(form):
