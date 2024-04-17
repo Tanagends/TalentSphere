@@ -22,7 +22,7 @@ def upload_profile_image(profile):
         profile.save(filepath)
     except Exception as e:
         print("Error saving file:", e)
-    return filepath
+    return filepath[4:]
 
 
 def base_fields(form):
