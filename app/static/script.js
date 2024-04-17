@@ -26,3 +26,9 @@ scrollToTopBtn.addEventListener("click", function() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 });
+
+ // Function to toggle the visibility of the popup
+    function togglePopup() {
+        $('#socialMediaPopup').modal('toggle');
+    }
+    
