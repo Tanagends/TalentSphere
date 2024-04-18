@@ -128,44 +128,6 @@
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* Custom CSS for Testimonials Section */
-#testimonials {
-  background-color: #E1E1E1;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-bottom: 50px;
-}
-
-.testimonial-card {
-  background-color: #FFFFFF;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px;
-}
-
-.testimonial-img {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin: 0 auto 20px;
-  display: block;
-}
-
-.testimonial-text {
-  font-size: 18px;
-  margin-bottom: 20px;
-}
-
-.testimonial-author {
-  font-weight: bold;
-}
-
-/* Testimonial carousel width and height adjustment */
-.carousel {
-  width: 100%;
-  height: 400px;
-}
 
 /* Adjustments for the footer */
 footer {
@@ -317,3 +279,125 @@ footer {
   padding: 20px 0;
 }
 
+ /* CSS to make the footer fixed at the bottom */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        footer {
+            margin-top: auto;
+        }
+        
+        	
+        	.carousel {
+  position: relative; /* Parent container to relative positioning */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute; 
+  top: 50%; 
+  transform: translateY(-50%); /* Center vertically */
+  z-index: 1; /* To ensure controls appear above carousel items */
+}
+
+.carousel-control-prev {
+  left: 0; /* Position the previous control to the left */
+}
+
+.carousel-control-next {
+  right: 0; /* Position the next control to the right */
+}
+
+/*size of the arrows */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  width: 20px; 
+  height: 20px;
+}
+
+/*social media popup*/
+.modal-content {
+        border-radius: 20px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        font-family: 'Roboto', sans-serif;
+    }
+
+    .modal-header {
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+    }
+
+    .modal-body {
+        padding: 40px;
+    }
+
+    .social-media-list {
+        padding: 0;
+        text-align: center;
+    }
+
+    .social-media-list li {
+        display: inline-block;
+        margin: 0 20px;
+    }
+
+    .social-media-list a {
+        color: #333;
+        text-decoration: none;
+        transition: color 0.3s;
+        font-size: 20px;
+    }
+
+    .social-media-list a:hover {
+        color: #007bff;
+    }
+
+    .fab {
+        font-size: 28px;
+        margin-right: 10px;
+    }
+    
+    /*revie card extra styling*/
+    .card {
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Scroll to top the button */
+  #scrollToTopBtn {
+    display: none; /* Hide the button by default */
+    position: fixed; /* Fixed position so it remains visible when scrolling */
+    bottom: 20px; /* Distance from the bottom of the viewport */
+    right: 20px; /* Distance from the right of the viewport */
+    z-index: 99; /* Ensure the button stays above other content */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    padding: 15px; /* Padding for the button */
+    font-size: 16px; /* Font size */
+    text-decoration: none; /* Remove underline */
+  }
+
+  /* Style for the button on hover */
+  #scrollToTopBtn:hover {
+    background-color: #0056b3; /* Darker background color */
+  }
+
+  /* Style for the button text */
+  #scrollToTopBtn::before {
+    content: "▲"; /* Unicode character for arrow up */
+  }
+
+  /* Show the button when the user scrolls down */
+  /* The style below can be removed if we want the button to always be visible */
+  body.scrollTop > 20px #scrollToTopBtn,
+  html.scrollTop > 20px #scrollToTopBtn {
+    display: block;
+  }
