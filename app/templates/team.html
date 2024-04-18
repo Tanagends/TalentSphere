@@ -36,15 +36,20 @@
           <a class="nav-link" href="/contact">Contact Us</a>
         </li>
       </ul>
+      <!-- Logged in user dropdown -->
+    <div class="ml-auto">
       <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Sign In
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Logged in as: {{ current_user.name }}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{{ url_for('main.login') }}">Login</a>
-          <a class="dropdown-item" href="{{ url_for('main.sign_up') }}">Signup</a>
+          <a class="dropdown-item" href="{{ url_for('main2.profile') }}">My Account</a>
+          <a class="dropdown-item" href="{{ url_for('main.logout') }}">Logout</a>
         </div>
       </div>
+    </div>
+    
+      
     </div>
   </div>
 </nav>
