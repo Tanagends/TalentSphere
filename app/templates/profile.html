@@ -7,7 +7,7 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="static/styles.css">
+  <link rel="stylesheet" href="/static/styles.css">
   <!-- Google Fonts - Roboto -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap">
   <!-- Font Awesome -->
@@ -55,7 +55,7 @@
 </nav>
 
 <div class="container mt-5">
-  <h2 class="mb-4 text-center">Profile</h2>
+  <h2 class="mb-4 text-center">Player Profile</h2>
   
   <!-- Profile Card -->
   <div class="card">
@@ -63,19 +63,34 @@
       <div class="row">
         <!-- Profile Picture -->
         <div class="col-md-3 text-center">
-		<img src="{{ player.profile_image_path }}" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
+		<img src="{{ '/' + player.profile_image_path }}" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
         </div>
         <!-- Personal Details -->
         <div class="col-md-9">
-          <!-- Bio -->
+	  <!-- Name and Surname -->	
           <div class="mt-4">
-            <h5>Bio:</h5>
-	    <p>{{ player.bio }}</p>
+            <h5>Full Name:</h5>
+	    <p>{{ player.name }} {{ player.surname }}</p>
+          </div>
+	  <!-- Position-->
+          <div class="mt-4">
+            <h5>Position:</h5>
+	    <p>{{ player.position }}</p>
+          </div>
+          <!-- Gender -->
+          <div class="mt-4">
+            <h5>Gender:</h5>
+	    <p>{{ player.gender }}</p>
           </div>
           <!-- Date of Birth -->
           <div class="mt-4">
             <h5>Date of Birth:</h5>
-	    <p>{{ player.DOB }}</p>
+	    <p>{{ player.DOB }}, {{ player.age }} years old.</p>
+          </div>
+	  <!-- Bio -->
+          <div class="mt-4">
+            <h5>Bio:</h5>
+	    <p>{{ player.bio }}</p>
           </div>
           <!-- City -->
           <div class="mt-4">
@@ -90,7 +105,11 @@
           <!-- Academy -->
           <div class="mt-4">
             <h5>Academy:</h5>
-	    <p>{{ player.academy }}</p>
+	    {% if player.academy %}
+	      <p>{{ player.academy }}</p>
+	    {% else %}
+	      <p>None</p>
+	    {% endif %}
           </div>
         </div>
       </div>
@@ -167,6 +186,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 <!-- Custom JS -->
-<script src="static/script.js"></script>
+<script src="/static/script.js"></script>
 </body>
 </html>
