@@ -100,7 +100,6 @@ def profiles():
             players = []
             for player in plyrs:
                 if len(players) < 12 and min_age <= player.age < max_age:
-                    print(player.age)
                     players.append(player)
             #query = query.filter(and_(age_expr >= min_age, age_expr < max_age))
         else:    

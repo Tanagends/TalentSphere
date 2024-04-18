@@ -24,7 +24,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav mr-auto"> 
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="/home">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/profiles">Profiles</a>
@@ -41,7 +41,7 @@
     <div class="ml-auto">
       <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-		Logged in as: {{ player.name }} {{ player.surname }}
+		Logged in as: {{ current_user.name }} {{ current_user.surname }}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="/my_account">My Account</a>
@@ -63,7 +63,13 @@
       <div class="row">
         <!-- Profile Picture -->
         <div class="col-md-3 text-center">
-		<img src="{{ '/' + player.profile_image_path }}" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
+		{% if player.profile_image_path %}
+			<img src="{{ '/' + player.profile_image_path }}" onerror="this.onerror=null; this.src='/static/profile_pics/default.png';" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
+		{% else %}
+			<img src="/static/profile_pics/default.png" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
+		{% endif %}
+
+			
         </div>
         <!-- Personal Details -->
         <div class="col-md-9">
