@@ -45,7 +45,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="/my_account">My Account</a>
-          <a class="dropdown-item" href="/logout">Logout</a> <!-- Add this line -->
+          <a class="dropdown-item" href="/logout">Logout</a> 
         </div>
       </div>
     </div>
@@ -57,68 +57,89 @@
 <div class="container mt-5">
   <h2 class="mb-4 text-center">Player Profile</h2>
   
-  <!-- Profile Card -->
-  <div class="card">
+  <!-- Main Profile Card -->
+  <div class="card mb-4">
     <div class="card-body">
       <div class="row">
         <!-- Profile Picture -->
-        <div class="col-md-3 text-center">
-		{% if player.profile_image_path %}
-			<img src="{{ '/' + player.profile_image_path }}" onerror="this.onerror=null; this.src='/static/profile_pics/default.png';" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
-		{% else %}
-			<img src="/static/profile_pics/default.png" alt="Profile Picture" class="img-thumbnail rounded-circle" style="width: 150px;">
-		{% endif %}
-
-			
+        <div class="col-md-3">
+          <!-- Profile Picture Card -->
+          <div class="card">
+            <div class="card-body text-center" style="height: 100%;">
+              {% if player.profile_image_path %}
+                <img src="{{ '/' + player.profile_image_path }}" onerror="this.onerror=null; this.src='/static/profile_pics/default.png';" alt="Profile Picture" class="img-thumbnail" style="height: 100%;">
+              {% else %}
+                <img src="/static/profile_pics/default.png" alt="Profile Picture" class="img-thumbnail" style="height: 100%;">
+              {% endif %}
+            </div>
+          </div>
         </div>
         <!-- Personal Details -->
         <div class="col-md-9">
-	  <!-- Name and Surname -->	
+          <!-- Name and Surname --> 
           <div class="mt-4">
             <h5>Full Name:</h5>
-	    <p>{{ player.name }} {{ player.surname }}</p>
+            <p>{{ player.name }} {{ player.surname }}</p>
           </div>
-	  <!-- Position-->
-          <div class="mt-4">
-            <h5>Position:</h5>
-	    <p>{{ player.position }}</p>
+          <!-- Position and Club -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mt-4">
+                <h5>Position:</h5>
+                <p>{{ player.position }}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mt-4">
+                <h5>Club:</h5>
+                <p>{{ player.club }}</p>
+              </div>
+            </div>
           </div>
-          <!-- Gender -->
-          <div class="mt-4">
-            <h5>Gender:</h5>
-	    <p>{{ player.gender }}</p>
+          <!-- Gender and Date of Birth -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mt-4">
+                <h5>Gender:</h5>
+                <p>{{ player.gender }}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mt-4">
+                <h5>Date of Birth:</h5>
+                <p>{{ player.DOB }}, {{ player.age }} years old.</p>
+              </div>
+            </div>
           </div>
-          <!-- Date of Birth -->
-          <div class="mt-4">
-            <h5>Date of Birth:</h5>
-	    <p>{{ player.DOB }}, {{ player.age }} years old.</p>
-          </div>
-	  <!-- Bio -->
-          <div class="mt-4">
-            <h5>Bio:</h5>
-	    <p>{{ player.bio }}</p>
-          </div>
-          <!-- City -->
-          <div class="mt-4">
-            <h5>City:</h5>
-	    <p>{{ player.city }}</p>
-          </div>
-          <!-- Club -->
-          <div class="mt-4">
-            <h5>Club:</h5>
-	    <p>{{ player.club }}</p>
-          </div>
-          <!-- Academy -->
-          <div class="mt-4">
-            <h5>Academy:</h5>
-	    {% if player.academy %}
-	      <p>{{ player.academy }}</p>
-	    {% else %}
-	      <p>None</p>
-	    {% endif %}
+          <!-- City and Academy -->
+          <div class="row">
+            <div class="col-md-6">
+              <div class="mt-4">
+                <h5>City:</h5>
+                <p>{{ player.city }}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="mt-4">
+                <h5>Academy:</h5>
+                {% if player.academy %}
+                  <p>{{ player.academy }}</p>
+                {% else %}
+                  <p>None</p>
+                {% endif %}
+              </div>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+  </div>
+  
+  <!-- Bio Card -->
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">Bio</h5>
+      <p class="card-text">{{ player.bio }}</p>
     </div>
   </div>
 </div>
