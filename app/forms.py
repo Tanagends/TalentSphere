@@ -120,3 +120,11 @@ class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     submit = SubmitField('login')
+
+
+class VideoUploadform(FlaskForm):
+    """Form for uploading videos"""
+
+    video_path = FileField('Video', validators=[FileRequired(), FileAllowed(['mp4', 'avi', 'flv', 'mov', 'wmv', 'mkv'],
+                      'Only mp4, avi, flv, mov, wmv, mkv files are allowed')])
+    submit = SubmitField('Upload')
