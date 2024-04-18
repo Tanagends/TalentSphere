@@ -104,6 +104,14 @@
                     <span style="color: red;">{{ error }}</span>
                   {% endfor %}
                 </p>
+		<p>
+                	{{ form.video_path.label }}
+                	{{ form.video_path(class_='form-control-file') }}
+                	{% for error in form.video_path.errors %}
+                    	<div class="error text-danger">{{ error }}</div>
+                	{% endfor %}
+            	</p>
+
                 {% block content %}{% endblock %}
                 <p>{{ form.submit() }}</p>
             </div>
