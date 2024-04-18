@@ -28,23 +28,23 @@ class BaseModel(db.Model, UserMixin):
     
     is_active = db.Column(db.Boolean, default=True)
     
-    def get_reset_token(self, expired_sec=3600):
-        """
-        - get_reset_token: function to get token
-        - expired_sec: the seconds it will take before token expired
-        """
-        s = serializer(current_app.Config['SECRET_KEY'], expired_sec)
-        token = s.dumps({'user_id': self.id})
-        return token
+    # def get_reset_token(self, expired_sec=3600):
+    #     """
+    #     - get_reset_token: function to get token
+    #     - expired_sec: the seconds it will take before token expired
+    #     """
+    #     s = serializer(current_app.Config['SECRET_KEY'], expired_sec)
+    #     token = s.dumps({'user_id': self.id})
+    #     return token
     
-    def verify_reset_token(token):
-        """Verify user token"""
-        s = serializer(current_app.Config['SECRET_KEY'])
-        try:
-            user_id = s.loads(token)['user_id']
-        except:
-            return None
-        return User.query.get(user_id)
+    # def verify_reset_token(token):
+    #     """Verify user token"""
+    #     s = serializer(current_app.Config['SECRET_KEY'])
+    #     try:
+    #         user_id = s.loads(token)['user_id']
+    #     except:
+    #         return None
+    #     return User.query.get(user_id)
 
     def is_active(self):
         """Check if the user account is active"""

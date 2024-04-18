@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Video</title>
+    <!-- Add any CSS stylesheets, fonts, and scripts as needed -->
+</head>
+
+<body>
+    <div class="container">
+        <h2>Upload Video</h2>
+
+        <!-- Flash messages for success and error -->
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                <div>
+                    {% for category, message in messages %}
+                        <div class="{{ category }}">{{ message }}</div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        {% endwith %}
+
+        <!-- Video upload form -->
+        <form action="{{ url_for('main2.video_upload') }}" method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            
+            <!-- Video file input -->
+            <div class="form-group">
+                {{ form.video_path.label }}
+                {{ form.video_path(class_='form-control-file') }}
+                {% for error in form.video_path.errors %}
+                    <div class="error text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+        
+            
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+
+        <!-- Video player for previewing uploaded video -->
+        {% if current_user.video_path %}
+            <h3>Video Preview</h3>
+            <video controls width="640">
+                <source src="{{ url_for('static', filename=current_user.video_file_path) }}" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        {% endif %}
+    </div>
+
+    <!-- Add any required scripts (e.g., Bootstrap, jQuery) -->
+</body>
+
+</html>

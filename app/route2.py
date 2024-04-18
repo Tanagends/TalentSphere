@@ -7,12 +7,14 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.edit_form import EditBaseForm, ClubAcademyEditForm, PlayerScoutEditForm
 from app.edit_form import PlayerEditForm, ScoutEditForm, SponsorEditForm
 from app.edit_form import ClubEditForm, AcademyEditForm
+from app.forms import VideoUploadform
 from app.models.basemodel import BaseModel
 from app.models.player import Player
 from app.models.scout import Scout
 from app.models.club import Club
 from app.models.academy import Academy
 from app.models.sponsor import Sponsor
+from app.models.video import Video
 from config import Config
 from sqlalchemy import func
 from datetime import datetime
@@ -149,7 +151,7 @@ def process_player_scout_form(form):
     current_user.email = form.email.data
     
     file = form.profile_image_path.data
-    file_path = upload_file(file)
+    file_path = upload_file(file, 'images')
         
     #check if not None
     if file and file_path:
@@ -168,7 +170,7 @@ def process_sponsor_form(form):
     current_user.organization = form.organization.data
     
     file = form.profile_image_path.data
-    file_path = upload_file(file)
+    file_path = upload_file(file, 'images')
         
     #check if not None
     if file and file_path:
@@ -180,7 +182,7 @@ def process_club_academy_form(form):
     current_user.bio = form.bio.data
     
     file = form.logo_path.data
-    file_path = upload_file(file)
+    file_path = upload_file(file, 'images')
     
     #check if not None
     if file and file_path:
@@ -218,24 +220,62 @@ def populate_form_field(form, user_type):
         form.logo_path.data = current_user.logo_path
 
 
-def upload_file(file_to_upload):
+@main_app.route('/upload', methods=['GET', 'POST'])
+def video_upload():
+    """Route to upload video"""
+    if not current_user.is_authenticated:
+        flash("You must be logged in to upload a video.", 'error')
+        return redirect(url_for('main.login'))
+    
+    player_id = session.get('user_id')
+    form = VideoUploadform()
+    if form.validate_on_submit():
+        video_file = form.video_path.data
+        
+        video_file_path = upload_file(video_file, 'videos')
+        
+        #check if video_file and video_file_path is not None
+        if video_file and video_file_path:
+            current_user.save(video_file, video_file_path)
+            
+            # Create and save Video instance
+            video = Video(
+                player_id=player_id,
+                video_path=video_file_path
+                )
+            db.session.add(video)
+            
+            try:
+                db.session.commit()
+                flash("video and thumbnail uploaded successufully", 'success')
+                return redirect(url_for('main2.video_upload'))
+            except SQLAlchemyError:
+                db.session.rollback()
+                flash("An error occurred while uploading", 'error')
+                return redirect(url_for('main2.video_upload'))
+        else:
+            flash("Failed to upload video or thumbnail.", 'error')
+            return redirect(url_for('main2.video_upload'))
+    return render_template('video_upload.html', form=form)
+
+def upload_file(file_to_upload, file_type):
     """Function to upload a file to the specified path
     - file_to_upload: file to upload
     """
     uploaded_files = file_to_upload
     
-    if not file_to_upload:
+    if uploaded_files is None:
+        print("Error: No file uploaded.")
         return None
+    
+    if file_type == "images":
+        uploaded_dir = current_app.config['UPLOAD_IMAGES']
+    elif file_type == "videos":
+        uploaded_dir = current_app.config['UPLOAD_VIDEOS']
     
 
     filename = secure_filename(uploaded_files.filename)
-    uploaded_dir = current_app.config['UPLOAD_IMAGES']
     file_path = os.path.join(os.path.abspath(os.path.dirname(__file__)), uploaded_dir, filename)
     
-    try:
-        file_to_upload.save(file_path)  # Save the file to the specified path
-        return file_path
-    except Exception as e:
-        # Handle file save errors
-        print(f"Error saving file: {e}")
-        return None
+   
+    return file_path
