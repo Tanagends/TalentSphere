@@ -2,7 +2,7 @@
 
 from flask_wtf import FlaskForm
 from datetime import date
-from flask_wtf.file import FileField, FileAllowed
+from flask_wtf.file import FileField, FileAllowed, FileRequired
 from wtforms import StringField, PasswordField, SubmitField, TextAreaField, DateField, IntegerField, SelectField
 from wtforms.validators import DataRequired, Length, Email
 
@@ -29,7 +29,8 @@ class PlayerScoutEditForm(EditBaseForm):
 
 class PlayerEditForm(PlayerScoutEditForm, EditBaseForm):
     """Player edit form"""
-    pass
+    video_path = FileField('Video', validators=[FileRequired(), FileAllowed(['mp4', 'avi', 'flv', 'mov', 'wmv', 'mkv'],
+                           'Only mp4, avi, flv, mov, wmv, mkv files are allowed')])
 
 class ScoutEditForm(PlayerScoutEditForm, EditBaseForm):
     """Scout edit form"""
