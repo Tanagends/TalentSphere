@@ -17,7 +17,7 @@ class EditBaseForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     gender = SelectField('Gender', choices=[("male", "Male"), ("female", "Female")], validators=[DataRequired()])
     profile_image_path = FileField('Profile Picture', validators=[
-                            FileAllowed(['jpg', 'png'], "Images only")])
+                            FileAllowed(['jpg', 'png', 'jpeg'], "Images only")])
     submit = SubmitField('Save Changes')
 
 
@@ -44,7 +44,7 @@ class SponsorEditForm(EditBaseForm):
 class ClubAcademyEditForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])
     logo_path = FileField("Logo", validators=[
-                          FileAllowed(['jpg', 'png'], "Images only")])
+                          FileAllowed(['jpg', 'png', 'jpeg'], "Images only")])
     bio = TextAreaField('Bio', validators=[Length(min=0, max=200)])
     submit = SubmitField('Submit')
 
