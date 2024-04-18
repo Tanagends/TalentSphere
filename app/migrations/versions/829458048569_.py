@@ -1,8 +1,8 @@
-"""migration
+"""empty message
 
-Revision ID: b3ad70ae2615
+Revision ID: 829458048569
 Revises: 
-Create Date: 2024-03-22 23:10:19.517136
+Create Date: 2024-04-18 09:45:46.679297
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b3ad70ae2615'
+revision = '829458048569'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -29,7 +29,8 @@ def upgrade():
     sa.Column('city', sa.String(length=120), nullable=True),
     sa.Column('country', sa.String(length=120), nullable=True),
     sa.Column('postal_code', sa.Integer(), nullable=True),
-    sa.Column('password', sa.String(length=120), nullable=True),
+    sa.Column('bio', sa.String(length=250), nullable=True),
+    sa.Column('password', sa.String(length=2048), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('clubs',
@@ -43,12 +44,14 @@ def upgrade():
     sa.Column('city', sa.String(length=120), nullable=True),
     sa.Column('country', sa.String(length=120), nullable=True),
     sa.Column('postal_code', sa.Integer(), nullable=True),
-    sa.Column('password', sa.String(length=120), nullable=True),
+    sa.Column('bio', sa.String(length=250), nullable=True),
+    sa.Column('password', sa.String(length=2048), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('players',
     sa.Column('surname', sa.String(length=120), nullable=False),
     sa.Column('DOB', sa.Date(), nullable=False),
+    sa.Column('gender', sa.String(length=120), nullable=True),
     sa.Column('position', sa.String(length=120), nullable=True),
     sa.Column('club', sa.String(length=120), nullable=True),
     sa.Column('academy', sa.String(length=120), nullable=True),
@@ -62,11 +65,13 @@ def upgrade():
     sa.Column('city', sa.String(length=120), nullable=True),
     sa.Column('country', sa.String(length=120), nullable=True),
     sa.Column('postal_code', sa.Integer(), nullable=True),
-    sa.Column('password', sa.String(length=120), nullable=True),
+    sa.Column('bio', sa.String(length=250), nullable=True),
+    sa.Column('password', sa.String(length=2048), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('sponsors',
     sa.Column('organization', sa.String(length=120), nullable=True),
+    sa.Column('gender', sa.String(length=120), nullable=True),
     sa.Column('profile_image_path', sa.String(length=255), nullable=True),
     sa.Column('id', sa.String(length=120), nullable=False),
     sa.Column('created_at', sa.DateTime(), nullable=True),
@@ -77,12 +82,14 @@ def upgrade():
     sa.Column('city', sa.String(length=120), nullable=True),
     sa.Column('country', sa.String(length=120), nullable=True),
     sa.Column('postal_code', sa.Integer(), nullable=True),
-    sa.Column('password', sa.String(length=120), nullable=True),
+    sa.Column('bio', sa.String(length=250), nullable=True),
+    sa.Column('password', sa.String(length=2048), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('scouts',
     sa.Column('surname', sa.String(length=120), nullable=False),
     sa.Column('DOB', sa.Date(), nullable=False),
+    sa.Column('gender', sa.String(length=120), nullable=True),
     sa.Column('profile_image_path', sa.String(length=255), nullable=True),
     sa.Column('club_id', sa.String(length=120), nullable=True),
     sa.Column('academy_id', sa.String(length=120), nullable=True),
@@ -95,7 +102,8 @@ def upgrade():
     sa.Column('city', sa.String(length=120), nullable=True),
     sa.Column('country', sa.String(length=120), nullable=True),
     sa.Column('postal_code', sa.Integer(), nullable=True),
-    sa.Column('password', sa.String(length=120), nullable=True),
+    sa.Column('bio', sa.String(length=250), nullable=True),
+    sa.Column('password', sa.String(length=2048), nullable=False),
     sa.ForeignKeyConstraint(['academy_id'], ['academies.id'], ),
     sa.ForeignKeyConstraint(['club_id'], ['clubs.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -105,7 +113,6 @@ def upgrade():
     sa.Column('created_at', sa.DateTime(), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
     sa.Column('video_path', sa.String(length=255), nullable=True),
-    sa.Column('video_thumbnail_path', sa.String(length=255), nullable=True),
     sa.Column('player_id', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['player_id'], ['players.id'], ),
     sa.PrimaryKeyConstraint('id')
