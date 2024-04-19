@@ -29,8 +29,8 @@ main3 = Blueprint('main3', __name__)
 @main3.route('/profile')
 def profile():
     return render_template('profile.html')
-
 """
+
 @main3.route('/profile/<string:id>', strict_slashes=False)
 def profile(id):
     
@@ -89,12 +89,6 @@ def profiles():
         else:
             min_age, max_age = None, None
 
-        """
-        age_expr = (db.extract('year', db.func.now()) - db.extract('year', Player.DOB)) -\
-                    ((db.extract('month', db.func.now), db.extract('day', db.func.now()))\
-                    < (db.extract('month', Player.DOB), db.extract('day', Player.DOB)))
-        """
-
         if min_age and max_age:
             plyrs = query.all()
             players = []
@@ -106,7 +100,7 @@ def profiles():
             players = query.limit(12).all()
 
         return render_template('profiles.html', players=players)
-  
+
     """
     search_dict = {}
     search_lis = [k == v for k, v in search_dict.items()]

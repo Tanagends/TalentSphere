@@ -13,6 +13,8 @@
 </head>
 <body>
 
+
+
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container">
@@ -52,11 +54,20 @@
   </div>
 </nav>
 
+<section id="cta" class="py-5 d-flex justify-content-center align-items-center" style="background-image: url('static/images/slideshow/11.jpg'); background-size: cover; background-position: center; height: 900px;">
+  <div class="container text-center" style="color: #d5e0c0;">
+    <h1 class="display-1 font-weight-bold text-uppercase">Welcome To Talent Sphere</h1>
+    <a href="#profiles" class="btn btn-light btn-lg btn-block mt-4">Get Started</a>
+  </div>
+</section>
+
+
+
+
 <!-- Profiles Section -->
 <section id="profiles" class="py-5">
-  <div class="container">
-    <h2 class="text-center mb-4">Welcome to Talent Sphere</h2>
-  
+
+     
   <!-- Filters Section -->
 <div class="row mb-4">
   <div class="col-md-3">
@@ -97,14 +108,15 @@
 </div>
 
     
- <!-- Profiles Section -->
+ <!-- Profiles inner Section -->
 <section id="profiles" class="py-5">
-  <div class="container">
+  <div class="card">
+  <div class="card-body">
     <h2 class="text-center mb-4"></h2>
     <div class="row" id="profileList">
     
-      <!-- Ideally we should add Profile cards dynamically here from the backend -->
-      <div class="col-md-4 mb-4">
+    
+     <div class="col-md-4 mb-4">
   <div class="card">
     <video class="card-img-top" controls>
       <source src="videos/prof1.mp4" type="video/mp4">
@@ -266,8 +278,10 @@
     </div>
   </div>
 </div>
-</section>
+</div>
 
+  </section>
+</div>
 
 
   <!-- Centered button -->
@@ -278,7 +292,9 @@
     </div>
   </div>
 
-  <!-- Blank section for spacing areas -->
+  
+
+<!-- Blank section for spacing areas -->
 <section id="spacer" class="py-5">
   <div class="container">
     <div class="row">
@@ -289,8 +305,56 @@
   </div>
 </section>
 
+
+<!-- Call-to-Action Section -->
+<section id="cta" class="py-5">
+  <div class="container text-center">
+    <h2 class="mb-4">Connect with us on social media!</h2>
+    <p class="mb-4">Stay updated with our latest events and offers.</p>
+  <button class="btn btn-primary" onclick="togglePopup()">Follow us</button>
+  </div>
+</section>
+
+<!-- Social Media Popup -->
+<div id="socialMediaPopup" class="modal fade">
+    <div class="modal-dialog modal-xl modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header bg-dark text-white">
+                <h5 class="modal-title">Follow Us on Social Media</h5>
+                <button type="button" class="close" onclick="togglePopup()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-unstyled list-inline social-media-list">
+                    <li class="list-inline-item">
+                        <a href="https://www.facebook.com/" target="_blank">
+                            <i class="fab fa-facebook-f"></i>
+                            <span>Facebook</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://twitter.com/" target="_blank">
+                            <i class="fab fa-twitter"></i>
+                            <span>Twitter</span>
+                        </a>
+                    </li>
+                    <li class="list-inline-item">
+                        <a href="https://www.instagram.com/" target="_blank">
+                            <i class="fab fa-instagram"></i>
+                            <span>Instagram</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <!-- Footer -->
-<footer class="bg-dark text-white py-4">
+<footer class="bg-dark text-white py-4 fixed-bottom">
   <div class="container text-center">
     <p>&copy; 2024 Talent Sphere. All rights reserved.</p>
   </div>

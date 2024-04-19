@@ -17,12 +17,12 @@ def upload_profile_image(profile):
     filenam = os.path.join(str(uuid4()) + ext)
     filename = secure_filename(filenam)
     profile.filename = filename
-    filepath = os.path.join('app/static/profile_pics/', filename)
+    filepath = os.path.join('/static/profile_pics/', filename)
     try:
         profile.save(filepath)
     except Exception as e:
         print("Error saving file:", e)
-    return filepath[4:]
+    return filepath
 
 
 def base_fields(form):

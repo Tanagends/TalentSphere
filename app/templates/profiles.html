@@ -42,7 +42,7 @@
           Logged in as: {{ current_user.name }}
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="{{ url_for('main2.profile', user_type=user_type) }}">My Account</a>
+          <a class="dropdown-item" href="/profile">My Account</a>
           <a class="dropdown-item" href="/logout">Logout</a> <!-- Add this line -->
         </div>
       </div>
@@ -100,9 +100,10 @@
   </form>	
 
     
- <!-- Profiles Section -->
+ <!-- Profiles inner Section -->
 <section id="profiles" class="py-5">
-  <div class="container">
+  <div class="card">
+  <div class="card-body">
     <h2 class="text-center mb-4"></h2>
     <div class="row" id="profileList">
     
@@ -119,7 +120,7 @@
             <p class="card-text">Bio: {{ player.bio }}</p>
       
             <form action="/profile/{{ player.id }}" method="get">
-              <button type="submit" class="btn btn-primary btn-sm expand-btn">See more</button>
+              <button type="submit" class="btn btn-primary btn-sm expand-btn">View profile</button>
             </form>
           </div>
         </div>
@@ -244,6 +245,18 @@
     -->
     </div>
   </div>
+  </div>
+
+                    </div>
+  <!-- Blank section for spacing areas -->
+<section id="spacer" class="py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Empty column to create space -->
+        </div>
+    </div>
+  </div>
 </section>
 
 
@@ -256,18 +269,9 @@
       </div>
     </div>
   </div>
-
-  <!-- Blank section for spacing areas -->
-<section id="spacer" class="py-5">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <!-- Empty column to create space -->
-        </div>
-    </div>
-  </div>
 </section>
 
+ 
 <!-- Footer -->
 <footer class="bg-dark text-white py-4">
   <div class="container text-center">
